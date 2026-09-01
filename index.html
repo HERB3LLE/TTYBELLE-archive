@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TTYBELLE ARCHIVE</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER IMAGE
+    ========================== -->
+
+    <section class="hero">
+
+        <img
+            src="images/header.jpe"
+            alt="KISS OF LIFE NATTY BELLE"
+        >
+
+        <div class="hero-text">
+
+            KISSOFLIFE<br>
+            NATTY BELLE
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         TITLE
+    ========================== -->
+
+    <header class="header">
+
+        <h1>
+            TTYBELLE ARCHIVE
+        </h1>
+
+        <p class="description">
+            KISS OF LIFE NATTY & BELLE
+        </p>
+
+    </header>
+
+
+
+    <!-- =========================
+         CATEGORY
+    ========================== -->
+
+    <nav class="categories">
+
+        <button
+            class="category active"
+            onclick="filterItems('all', this)"
+        >
+            ALL
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterItems('photo', this)"
+        >
+            PHOTO
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterItems('video', this)"
+        >
+            VIDEO
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterItems('reels', this)"
+        >
+            REELS
+        </button>
+
+    </nav>
+
+
+
+    <!-- =========================
+         SEARCH / SORT
+    ========================== -->
+
+    <section class="tools">
+
+        <input
+            id="search"
+            type="search"
+            placeholder="Search"
+            oninput="searchItems()"
+        >
+
+
+        <select
+            id="sort"
+            onchange="changeSort()"
+        >
+
+            <option value="new">
+                최신순
+            </option>
+
+            <option value="old">
+                과거순
+            </option>
+
+        </select>
+
+    </section>
+
+
+
+    <!-- =========================
+         ARCHIVE
+    ========================== -->
+
+    <main
+        id="archive"
+        class="archive"
+    >
+
+    </main>
+
+
+
+    <!-- =========================
+         IMAGE MODAL
+    ========================== -->
+
+    <div
+        id="imageModal"
+        class="modal"
+        onclick="closeModal()"
+    >
+
+        <button
+            class="close"
+            onclick="closeModal()"
+        >
+            ×
+        </button>
+
+
+        <img
+            id="modalImage"
+            src=""
+            alt=""
+        >
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
