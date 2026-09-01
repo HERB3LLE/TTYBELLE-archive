@@ -84,9 +84,9 @@ let items = [
     
      {
         type: "photo",
-        date: "2026-08-08",
-        title: "음악중심 behind photo",
-        file: "IMG_8271.jpeg"
+        date: "2025-08-06",
+        title: "Sziget Festival 🐰🫧💬",
+        file: "776fb4c918b4e464c3d2f4436d0b0e26652ce89f.jpeg"
     },
     
     // 영상
