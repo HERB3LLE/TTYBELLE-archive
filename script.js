@@ -89,23 +89,7 @@ let items = [
         file: "776fb4c918b4e464c3d2f4436d0b0e26652ce89f.jpeg"
     },
     
-    // 영상
-    {
-        type: "video",
-        date: "",
-        title: "",
-        file: ""
-    },
-
-
-    // 릴스
-    {
-        type: "reels",
-        date: "",
-        title: "",
-        file: "",
-        link: ""
-    }
+    
 
 ];
 
