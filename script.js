@@ -26,13 +26,33 @@ let items = [
         file: "IMG_8266.jpeg"
     },
 
-
+ {
+        type: "photo",
+        date: "2025-06-25",
+        title: "쇼챔피언 behind photo",
+        file: "IMG_8267.jpeg"
+    },
+    
+     {
+        type: "photo",
+        date: "2025-06-25",
+        title: "쇼챔피언 behind photo",
+        file: "IMG_8267.jpeg"
+    },
+    
+     {
+        type: "photo",
+        date: "2025-06-25",
+        title: "쇼챔피언 behind photo",
+        file: "IMG_8267.jpeg"
+    },
+    
     // 영상
     {
         type: "video",
-        date: "2026-08-14",
-        title: "1",
-        file: "images/1.mp4"
+        date: "2025-06-25",
+        title: "photo",
+        file: "IMG_8267.jpeg"
     },
 
 
