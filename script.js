@@ -89,7 +89,19 @@ let items = [
         file: "776fb4c918b4e464c3d2f4436d0b0e26652ce89f.jpeg"
     },
     
-    
+    {
+        type: "photo",
+        date: "2025-10-29",
+        title: "연고지",
+        file: "IMG_8284.jpeg"
+    },
+
+{
+        type: "photo",
+        date: "2025-10-29",
+        title: "연고지",
+        file: "IMG_8285.jpeg"
+    },
 
 ];
 
