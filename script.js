@@ -7,16 +7,16 @@ let items = [
     // 사진
     {
         type: "photo",
-        date: "2026-08-17",
-        title: "1",
-        file: "images/1.jpg"
+        date: "2023-12-11",
+        title: "음악중심 behind photo",
+        file: "IMG_8264.jpeg"
     },
 
     {
         type: "photo",
-        date: "2026-08-16",
-        title: "2",
-        file: "images/2.jpg"
+        date: "2023-12-02",
+        title: "심플리 behind photo",
+        file: "IMG_8265.jpeg"
     },
 
     {
