@@ -1,0 +1,641 @@
+/* =================================
+   BASIC
+================================= */
+
+* {
+    box-sizing: border-box;
+
+    -webkit-tap-highlight-color:
+        transparent;
+}
+
+
+html,
+body {
+
+    margin: 0;
+
+    padding: 0;
+
+    width: 100%;
+
+}
+
+
+body {
+
+    background: #ffffff;
+
+    color: #111111;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.hero {
+
+    position: relative;
+
+    width: calc(100% - 28px);
+
+    margin: 14px auto 0;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+}
+
+
+.hero img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+}
+
+
+.hero-text {
+
+    position: absolute;
+
+    right: 13px;
+
+    bottom: 12px;
+
+    color: #ffffff;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+    letter-spacing: 1.2px;
+
+    text-align: right;
+
+    text-shadow:
+        0 1px 5px rgba(0,0,0,0.5);
+
+}
+
+
+/* =================================
+   HEADER
+================================= */
+
+.header {
+
+    width: calc(100% - 28px);
+
+    margin: 24px auto 0;
+
+    padding-bottom: 15px;
+
+    border-bottom:
+        1px solid #111111;
+
+}
+
+
+.header h1 {
+
+    margin: 0;
+
+    font-size: 21px;
+
+    font-weight: 600;
+
+    letter-spacing: -0.5px;
+
+}
+
+
+.description {
+
+    margin: 7px 0 0;
+
+    color: #999999;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =================================
+   CATEGORY
+================================= */
+
+.categories {
+
+    width: calc(100% - 28px);
+
+    margin: 0 auto;
+
+    display: flex;
+
+    gap: 18px;
+
+    padding: 14px 0;
+
+    border-bottom:
+        1px solid #eeeeee;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+}
+
+
+.categories::-webkit-scrollbar {
+
+    display: none;
+
+}
+
+
+.category {
+
+    flex-shrink: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    background: none;
+
+    color: #aaaaaa;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.category.active {
+
+    color: #111111;
+
+    font-weight: bold;
+
+}
+
+
+/* =================================
+   SEARCH / SORT
+================================= */
+
+.tools {
+
+    width: calc(100% - 28px);
+
+    margin: 0 auto;
+
+    padding: 13px 0;
+
+    display: flex;
+
+    gap: 8px;
+
+    align-items: center;
+
+}
+
+
+#search {
+
+    flex: 1;
+
+    min-width: 0;
+
+    height: 34px;
+
+    padding:
+        0 11px;
+
+    border:
+        1px solid #dddddd;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    font-size: 11px;
+
+}
+
+
+#sort {
+
+    width: 82px;
+
+    height: 34px;
+
+    padding:
+        0 6px;
+
+    border:
+        1px solid #dddddd;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    font-size: 10px;
+
+    outline: none;
+
+}
+
+
+/* =================================
+   ARCHIVE GRID
+================================= */
+
+.archive {
+
+    width: calc(100% - 28px);
+
+    margin: 3px auto 50px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 22px 9px;
+
+}
+
+
+/* =================================
+   POST
+================================= */
+
+.item {
+
+    min-width: 0;
+
+}
+
+
+/* =================================
+   PHOTO SLIDER
+================================= */
+
+.post-slider {
+
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 7px;
+
+    background: #f3f3f3;
+
+    touch-action: pan-y;
+
+}
+
+
+.slider-track {
+
+    display: flex;
+
+    width: 100%;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+.slide-image {
+
+    flex:
+        0 0 100%;
+
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    cursor: pointer;
+
+    object-fit: contain;
+
+}
+
+
+/* =================================
+   DOTS
+================================= */
+
+.dots {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 4px;
+
+    height: 18px;
+
+}
+
+
+.dot {
+
+    width: 4px;
+
+    height: 4px;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #d0d0d0;
+
+}
+
+
+.dot.active {
+
+    background: #111111;
+
+    transform: scale(1.2);
+
+}
+
+
+/* =================================
+   VIDEO
+================================= */
+
+.media-video {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 7px;
+
+    background: #000000;
+
+}
+
+
+.media-video video {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+}
+
+
+/* =================================
+   REELS
+================================= */
+
+.reels-link {
+
+    display: block;
+
+    position: relative;
+
+    text-decoration: none;
+
+}
+
+
+.reels-link img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+}
+
+
+.reels-label {
+
+    position: absolute;
+
+    right: 7px;
+
+    bottom: 7px;
+
+    padding:
+        4px 6px;
+
+    border-radius: 4px;
+
+    background:
+        rgba(0,0,0,0.65);
+
+    color: #ffffff;
+
+    font-size: 8px;
+
+    letter-spacing: 0.8px;
+
+}
+
+
+/* =================================
+   INFO
+================================= */
+
+.info {
+
+    padding:
+        8px 2px 0;
+
+}
+
+
+.title {
+
+    margin-bottom: 4px;
+
+    font-size: 11px;
+
+    line-height: 1.3;
+
+}
+
+
+.date {
+
+    color: #888888;
+
+    font-size: 9px;
+
+}
+
+
+.type {
+
+    margin-top: 4px;
+
+    color: #aaaaaa;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =================================
+   EMPTY
+================================= */
+
+.empty {
+
+    grid-column:
+        1 / -1;
+
+    padding:
+        70px 0;
+
+    text-align: center;
+
+    color: #aaaaaa;
+
+    font-size: 10px;
+
+}
+
+
+/* =================================
+   IMAGE MODAL
+================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 15px;
+
+    background:
+        rgba(0,0,0,0.92);
+
+}
+
+
+.modal.show {
+
+    display: flex;
+
+}
+
+
+.modal img {
+
+    display: block;
+
+    max-width: 100%;
+
+    max-height: 90vh;
+
+    object-fit: contain;
+
+}
+
+
+.close {
+
+    position: fixed;
+
+    top: 12px;
+
+    right: 16px;
+
+    z-index: 1001;
+
+    border: 0;
+
+    background: none;
+
+    color: #ffffff;
+
+    font-size: 32px;
+
+}
+
+
+/* =================================
+   SMALL PHONE
+================================= */
+
+@media (max-width: 360px) {
+
+    .hero {
+
+        width:
+            calc(100% - 20px);
+
+        margin-top: 10px;
+
+    }
+
+
+    .header,
+    .categories,
+    .tools,
+    .archive {
+
+        width:
+            calc(100% - 20px);
+
+    }
+
+
+    .archive {
+
+        gap: 18px 7px;
+
+    }
+
+}
