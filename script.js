@@ -92,19 +92,19 @@ let items = [
     // 영상
     {
         type: "video",
-        date: "2025-06-25",
-        title: "photo",
-        file: "IMG_8267.jpeg"
+        date: "2004-03-20",
+        title: "comming soon",
+        file: ""
     },
 
 
     // 릴스
     {
         type: "reels",
-        date: "2026-08-13",
-        title: "1",
-        file: "images/reels1.jpg",
-        link: "https://www.instagram.com/"
+        date: "2002-05-30",
+        title: "comming soon",
+        file: "",
+        link: ""
     }
 
 ];
