@@ -92,8 +92,8 @@ let items = [
     // 영상
     {
         type: "video",
-        date: "2004-03-20",
-        title: "comming soon",
+        date: "",
+        title: "",
         file: ""
     },
 
@@ -101,8 +101,8 @@ let items = [
     // 릴스
     {
         type: "reels",
-        date: "2002-05-30",
-        title: "comming soon",
+        date: "",
+        title: "",
         file: "",
         link: ""
     }
