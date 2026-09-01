@@ -47,6 +47,48 @@ let items = [
         file: "IMG_8269.jpeg"
     },
     
+    {
+        type: "photo",
+        date: "2026-04-22",
+        title: "쇼챔피언 behind photo",
+        file: "IMG_8270.jpeg"
+    },
+    
+     {
+        type: "photo",
+        date: "2026-08-08",
+        title: "음악중심 behind photo",
+        file: "IMG_8271.jpeg"
+    },
+    
+    {
+        type: "photo",
+        date: "2026-08-12",
+        title: "쇼챔피언 behind photo",
+        file: "IMG_8272.jpeg"
+    },
+    
+     {
+        type: "photo",
+        date: "2026-08-19",
+        title: "쇼챔피언 behind photo",
+        file: "IMG_8273.jpeg"
+    },
+    
+    {
+        type: "photo",
+        date: "2026-04-22",
+        title: "음악중심 behind photo",
+        file: "IMG_8274.jpeg"
+    },
+    
+     {
+        type: "photo",
+        date: "2026-08-08",
+        title: "음악중심 behind photo",
+        file: "IMG_8271.jpeg"
+    },
+    
     // 영상
     {
         type: "video",
