@@ -35,16 +35,16 @@ let items = [
     
      {
         type: "photo",
-        date: "2025-06-25",
-        title: "쇼챔피언 behind photo",
-        file: "IMG_8267.jpeg"
+        date: "2026-04-11",
+        title: "음악중심 behind photo",
+        file: "IMG_8268.jpeg"
     },
     
      {
         type: "photo",
-        date: "2025-06-25",
-        title: "쇼챔피언 behind photo",
-        file: "IMG_8267.jpeg"
+        date: "2026-04-17",
+        title: "뮤직뱅크 behind photo",
+        file: "IMG_8269.jpeg"
     },
     
     // 영상
