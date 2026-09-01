@@ -1,95 +1,100 @@
 // =================================
-// ARCHIVE DATA
+// 아카이브 자료
 // =================================
 
 let items = [
 
-    // =================================
-    // 여러 장 사진 포스트
-    // =================================
-
+    // 사진
     {
         type: "photo",
-
-        date: "2026-08-19",
-
-        title: "쇼챔피언 behind photo",
-
-        files: [
-            "images/IMG_8273.jpeg",
-            "images/IMG_8274.jpeg",
-            "images/IMG_8275.jpeg"
-        ]
-    },
-
-
-    // =================================
-    // 한 장짜리 사진
-    // =================================
-
-    {
-        type: "photo",
-
-        date: "2026-08-17",
-
+        date: "2023-12-11",
         title: "음악중심 behind photo",
-
-        files: [
-            "images/IMG_8271.jpeg"
-        ]
+        file: "IMG_8264.jpeg"
     },
-
 
     {
         type: "photo",
+        date: "2023-12-02",
+        title: "심플리 behind photo",
+        file: "IMG_8265.jpeg"
+    },
 
-        date: "2026-08-16",
+    {
+        type: "photo",
+        date: "2025-06-14",
+        title: "음악중심 behind photo",
+        file: "IMG_8266.jpeg"
+    },
 
+ {
+        type: "photo",
+        date: "2025-06-25",
         title: "쇼챔피언 behind photo",
-
-        files: [
-            "images/IMG_8272.jpeg"
-        ]
+        file: "IMG_8267.jpeg"
     },
-
-
-    // =================================
-    // 영상
-    // =================================
-
-    {
-        type: "video",
-
-        date: "2026-08-14",
-
-        title: "VIDEO",
-
-        file: "images/1.mp4"
+    
+     {
+        type: "photo",
+        date: "2026-04-11",
+        title: "음악중심 behind photo",
+        file: "IMG_8268.jpeg"
     },
-
-
-    // =================================
-    // 릴스
-    // =================================
-
+    
+     {
+        type: "photo",
+        date: "2026-04-17",
+        title: "뮤직뱅크 behind photo",
+        file: "IMG_8269.jpeg"
+    },
+    
     {
-        type: "reels",
-
-        date: "2026-08-13",
-
-        title: "REELS",
-
-        file: "images/reels1.jpg",
-
-        link:
-            "https://www.instagram.com/"
-    }
+        type: "photo",
+        date: "2026-04-22",
+        title: "쇼챔피언 behind photo",
+        file: "IMG_8270.jpeg"
+    },
+    
+     {
+        type: "photo",
+        date: "2026-08-08",
+        title: "음악중심 behind photo",
+        file: "IMG_8271.jpeg"
+    },
+    
+    {
+        type: "photo",
+        date: "2026-08-12",
+        title: "쇼챔피언 behind photo",
+        file: "IMG_8272.jpeg"
+    },
+    
+     {
+        type: "photo",
+        date: "2026-08-19",
+        title: "쇼챔피언 behind photo",
+        file: "IMG_8273.jpeg"
+    },
+    
+    {
+        type: "photo",
+        date: "2026-04-22",
+        title: "음악중심 behind photo",
+        file: "IMG_8274.jpeg"
+    },
+    
+     {
+        type: "photo",
+        date: "2025-08-06",
+        title: "Sziget Festival 🐰🫧💬",
+        file: "776fb4c918b4e464c3d2f4436d0b0e26652ce89f.jpeg"
+    },
+    
+    
 
 ];
 
-
 // =================================
-// SETTINGS
+// 현재 설정
 // =================================
 
 let currentFilter = "all";
@@ -98,16 +103,8 @@ let currentSort = "new";
 
 let searchText = "";
 
-
 // =================================
-// SLIDER STATE
-// =================================
-
-let sliderStates = {};
-
-
-// =================================
-// RENDER
+// 화면 표시
 // =================================
 
 function render() {
@@ -115,15 +112,9 @@ function render() {
     const archive =
         document.getElementById("archive");
 
+    let filteredItems = [...items];
 
-    let filteredItems =
-        [...items];
-
-
-    // =================================
-    // FILTER
-    // =================================
-
+    // 카테고리 필터
     if (currentFilter !== "all") {
 
         filteredItems =
@@ -134,18 +125,11 @@ function render() {
 
     }
 
-
-    // =================================
-    // SEARCH
-    // =================================
-
+    // 검색
     if (searchText.trim() !== "") {
 
         const keyword =
-            searchText
-                .toLowerCase()
-                .trim();
-
+            searchText.toLowerCase().trim();
 
         filteredItems =
             filteredItems.filter(item =>
@@ -156,18 +140,13 @@ function render() {
 
                 ||
 
-                item.date
-                    .includes(keyword)
+                item.date.includes(keyword)
 
             );
 
     }
 
-
-    // =================================
-    // SORT
-    // =================================
-
+    // 최신순 / 과거순
     filteredItems.sort((a, b) => {
 
         const dateA =
@@ -176,57 +155,38 @@ function render() {
         const dateB =
             new Date(b.date);
 
-
         if (currentSort === "new") {
 
             return dateB - dateA;
 
         }
 
-
         return dateA - dateB;
 
     });
 
-
     archive.innerHTML = "";
 
-
-    // =================================
-    // EMPTY
-    // =================================
-
+    // 자료 없음
     if (filteredItems.length === 0) {
 
         archive.innerHTML = `
-
             <div class="empty">
                 No archive found.
             </div>
-
         `;
 
         return;
 
     }
 
-
-    // =================================
-    // CREATE POSTS
-    // =================================
-
-    filteredItems.forEach(
-        (item, itemIndex) => {
+    // 자료 만들기
+    filteredItems.forEach(item => {
 
         const element =
-            document.createElement(
-                "article"
-            );
+            document.createElement("article");
 
-
-        element.className =
-            "item";
-
+        element.className = "item";
 
         // =================================
         // PHOTO
@@ -234,85 +194,19 @@ function render() {
 
         if (item.type === "photo") {
 
-            const photos =
-                item.files || [item.file];
-
-
-            const sliderId =
-                "slider-" +
-                Math.random()
-                    .toString(36)
-                    .substring(2, 10);
-
-
-            sliderStates[sliderId] = 0;
-
-
             element.innerHTML = `
 
                 <div
-                    class="post-slider"
-                    id="${sliderId}"
+                    class="media"
+                    onclick="openImage('${item.file}')"
                 >
 
-                    <div
-                        class="slider-track"
+                    <img
+                        src="${item.file}"
+                        alt="${item.title}"
                     >
-
-                        ${photos.map(
-                            (photo, index) => `
-
-                            <img
-                                src="${photo}"
-                                class="slide-image"
-                                alt="${item.title}"
-                                data-index="${index}"
-                            >
-
-                        `
-                        ).join("")}
-
-                    </div>
 
                 </div>
-
-
-                ${
-                    photos.length > 1
-
-                    ? `
-
-                    <div
-                        class="dots"
-                    >
-
-                        ${photos.map(
-                            (photo, index) => `
-
-                            <button
-                                class="dot ${
-                                    index === 0
-                                    ? "active"
-                                    : ""
-                                }"
-                                onclick="
-                                    goToSlide(
-                                        '${sliderId}',
-                                        ${index}
-                                    )
-                                "
-                            ></button>
-
-                        `
-                        ).join("")}
-
-                    </div>
-
-                    `
-
-                    : ""
-                }
-
 
                 <div class="info">
 
@@ -332,50 +226,7 @@ function render() {
 
             `;
 
-
-            // =================================
-            // SWIPE
-            // =================================
-
-            if (photos.length > 1) {
-
-                setupSwipe(
-                    sliderId,
-                    photos.length
-                );
-
-            }
-
-
-            // =================================
-            // IMAGE CLICK
-            // =================================
-
-            const images =
-                element.querySelectorAll(
-                    ".slide-image"
-                );
-
-
-            images.forEach(image => {
-
-                image.addEventListener(
-                    "click",
-                    function(event) {
-
-                        event.stopPropagation();
-
-                        openImage(
-                            this.src
-                        );
-
-                    }
-                );
-
-            });
-
         }
-
 
         // =================================
         // VIDEO
@@ -385,7 +236,7 @@ function render() {
 
             element.innerHTML = `
 
-                <div class="media-video">
+                <div class="media">
 
                     <video
                         src="${item.file}"
@@ -394,7 +245,6 @@ function render() {
                     ></video>
 
                 </div>
-
 
                 <div class="info">
 
@@ -416,7 +266,6 @@ function render() {
 
         }
 
-
         // =================================
         // REELS
         // =================================
@@ -432,17 +281,20 @@ function render() {
                     rel="noopener noreferrer"
                 >
 
-                    <img
-                        src="${item.file}"
-                        alt="${item.title}"
-                    >
+                    <div class="media">
 
-                    <span class="reels-label">
-                        REELS ↗
-                    </span>
+                        <img
+                            src="${item.file}"
+                            alt="${item.title}"
+                        >
+
+                        <span class="reels-label">
+                            REELS ↗
+                        </span>
+
+                    </div>
 
                 </a>
-
 
                 <div class="info">
 
@@ -464,284 +316,68 @@ function render() {
 
         }
 
-
         archive.appendChild(element);
 
     });
 
 }
 
-
 // =================================
-// SWIPE SETUP
-// =================================
-
-function setupSwipe(id, total) {
-
-    const slider =
-        document.getElementById(id);
-
-
-    const track =
-        slider.querySelector(
-            ".slider-track"
-        );
-
-
-    let startX = 0;
-
-    let startY = 0;
-
-
-    slider.addEventListener(
-        "touchstart",
-        function(event) {
-
-            startX =
-                event.touches[0].clientX;
-
-            startY =
-                event.touches[0].clientY;
-
-        },
-        { passive: true }
-    );
-
-
-    slider.addEventListener(
-        "touchend",
-        function(event) {
-
-            const endX =
-                event.changedTouches[0].clientX;
-
-            const endY =
-                event.changedTouches[0].clientY;
-
-
-            const differenceX =
-                endX - startX;
-
-            const differenceY =
-                endY - startY;
-
-
-            // 세로 스크롤이면 무시
-            if (
-                Math.abs(differenceY)
-                >
-                Math.abs(differenceX)
-            ) {
-
-                return;
-
-            }
-
-
-            // 너무 조금 움직였으면 무시
-            if (
-                Math.abs(differenceX) < 40
-            ) {
-
-                return;
-
-            }
-
-
-            let current =
-                sliderStates[id] || 0;
-
-
-            // 왼쪽으로 밀기
-            if (differenceX < 0) {
-
-                current++;
-
-            }
-
-
-            // 오른쪽으로 밀기
-            else {
-
-                current--;
-
-            }
-
-
-            // 마지막 → 처음
-            if (current >= total) {
-
-                current = 0;
-
-            }
-
-
-            // 처음 → 마지막
-            if (current < 0) {
-
-                current =
-                    total - 1;
-
-            }
-
-
-            sliderStates[id] =
-                current;
-
-
-            updateSlide(
-                id,
-                current
-            );
-
-        },
-        { passive: true }
-    );
-
-}
-
-
-// =================================
-// SLIDE
+// 카테고리
 // =================================
 
-function goToSlide(id, index) {
+function filterItems(type, button) {
 
-    sliderStates[id] =
-        index;
-
-
-    updateSlide(
-        id,
-        index
-    );
-
-}
-
-
-function updateSlide(id, index) {
-
-    const slider =
-        document.getElementById(id);
-
-
-    if (!slider) {
-        return;
-    }
-
-
-    const track =
-        slider.querySelector(
-            ".slider-track"
-        );
-
-
-    track.style.transform =
-        `translateX(-${index * 100}%)`;
-
-
-    const dots =
-        slider
-            .parentElement
-            .querySelectorAll(
-                ".dot"
-            );
-
-
-    dots.forEach(
-        (dot, dotIndex) => {
-
-            dot.classList.toggle(
-                "active",
-                dotIndex === index
-            );
-
-        }
-    );
-
-}
-
-
-// =================================
-// FILTER
-// =================================
-
-function filterItems(
-    type,
-    button
-) {
-
-    currentFilter =
-        type;
-
+    currentFilter = type;
 
     document
-        .querySelectorAll(
-            ".category"
-        )
+        .querySelectorAll(".category")
         .forEach(btn => {
 
-            btn.classList.remove(
-                "active"
-            );
+            btn.classList.remove("active");
 
         });
 
-
-    button.classList.add(
-        "active"
-    );
-
+    button.classList.add("active");
 
     render();
 
 }
 
-
 // =================================
-// SORT
+// 정렬
 // =================================
 
 function changeSort() {
 
     const select =
-        document.getElementById(
-            "sort"
-        );
-
+        document.getElementById("sort");
 
     currentSort =
         select.value;
-
 
     render();
 
 }
 
-
 // =================================
-// SEARCH
+// 검색
 // =================================
 
 function searchItems() {
 
     const search =
-        document.getElementById(
-            "search"
-        );
-
+        document.getElementById("search");
 
     searchText =
         search.value;
-
 
     render();
 
 }
 
-
 // =================================
-// DATE
+// 날짜
 // =================================
 
 function formatDate(date) {
@@ -749,68 +385,43 @@ function formatDate(date) {
     const parts =
         date.split("-");
 
-
-    return (
-        parts[0] +
-        "." +
-        parts[1] +
-        "." +
-        parts[2]
-    );
+    return `${parts[0]}.${parts[1]}.${parts[2]}`;
 
 }
 
-
 // =================================
-// IMAGE MODAL
+// 사진 확대
 // =================================
 
 function openImage(src) {
 
     const modal =
-        document.getElementById(
-            "imageModal"
-        );
-
+        document.getElementById("imageModal");
 
     const image =
-        document.getElementById(
-            "modalImage"
-        );
+        document.getElementById("modalImage");
 
+    image.src = src;
 
-    image.src =
-        src;
-
-
-    modal.classList.add(
-        "show"
-    );
+    modal.classList.add("show");
 
 }
 
-
 // =================================
-// CLOSE MODAL
+// 확대 닫기
 // =================================
 
 function closeModal() {
 
     const modal =
-        document.getElementById(
-            "imageModal"
-        );
+        document.getElementById("imageModal");
 
-
-    modal.classList.remove(
-        "show"
-    );
+    modal.classList.remove("show");
 
 }
 
-
 // =================================
-// START
+// 시작
 // =================================
 
 render();
