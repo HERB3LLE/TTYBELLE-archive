@@ -21,9 +21,9 @@ let items = [
 
     {
         type: "photo",
-        date: "2026-08-15",
-        title: "3",
-        file: "images/3.jpg"
+        date: "2025-06-14",
+        title: "음악중심 behind photo",
+        file: "IMG_8266.jpeg"
     },
 
 
