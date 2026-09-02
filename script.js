@@ -112,9 +112,10 @@ let items = [
 
 {
         type: "photo",
-        date: "2023-11-23",
-        title: "다들 벨띠 매고 Drive 갈래?😎",
-        file: "63B2C4E7-74B5-42ED-85E2-D70FC9EB83C4.jpeg"
+        date: "2026-03-30",
+        title: "[아이돌라디오] 항상 사이 좋았던 벨띠💜🩷
+키씨들이 챙겨주고 이뻐해줘서 다행이야…",
+        file: "0ECD77F3-6127-4770-B63E-339979C5CBFA"
     },
 
 ];
