@@ -110,6 +110,13 @@ let items = [
         file: "63B2C4E7-74B5-42ED-85E2-D70FC9EB83C4.jpeg"
     },
 
+{
+        type: "photo",
+        date: "2023-11-23",
+        title: "다들 벨띠 매고 Drive 갈래?😎",
+        file: "63B2C4E7-74B5-42ED-85E2-D70FC9EB83C4.jpeg"
+    },
+
 ];
 
 // =================================
