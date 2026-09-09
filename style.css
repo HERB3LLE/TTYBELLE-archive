@@ -688,3 +688,84 @@ body {
         height: 20px;
     }
 }
+
+/* =================================
+   날짜별 좌우 슬라이드
+================================= */
+
+.media-slider {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 7px;
+}
+
+.media-track {
+    display: flex;
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    overscroll-behavior-x: contain;
+}
+
+.media-track::-webkit-scrollbar {
+    display: none;
+}
+
+.media-slide {
+    flex: 0 0 100%;
+
+    width: 100%;
+
+    scroll-snap-align: start;
+
+    scroll-snap-stop: always;
+}
+
+
+/* 슬라이드 점 */
+
+.slider-dots {
+    position: absolute;
+
+    left: 50%;
+    bottom: 8px;
+
+    transform: translateX(-50%);
+
+    z-index: 10;
+
+    display: flex;
+
+    gap: 4px;
+
+    padding: 4px 6px;
+
+    border-radius: 10px;
+
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.slider-dot {
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.slider-dot.active {
+    background: #ffffff;
+}
