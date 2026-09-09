@@ -270,6 +270,34 @@ let currentLanguage =
 
 
 // =================================
+// 날짜별 그룹 만들기
+// =================================
+
+function groupByDate(data) {
+
+    const groups = {};
+
+    data.forEach(item => {
+
+        if (!groups[item.date]) {
+            groups[item.date] = [];
+        }
+
+        groups[item.date].push(item);
+
+    });
+
+    return Object.entries(groups).map(
+        ([date, groupItems]) => ({
+            date,
+            items: groupItems
+        })
+    );
+
+}
+
+
+// =================================
 // 화면 표시
 // =================================
 
@@ -315,8 +343,13 @@ function render() {
     }
 
 
+    // 날짜별 그룹
+    let groups =
+        groupByDate(filteredItems);
+
+
     // 최신순 / 과거순
-    filteredItems.sort((a, b) => {
+    groups.sort((a, b) => {
 
         const dateA =
             new Date(a.date);
@@ -337,7 +370,7 @@ function render() {
 
 
     // 자료 없음
-    if (filteredItems.length === 0) {
+    if (groups.length === 0) {
 
         archive.innerHTML = `
             <div class="empty">
@@ -350,8 +383,8 @@ function render() {
     }
 
 
-    // 자료 만들기
-    filteredItems.forEach(item => {
+    // 날짜별 카드 만들기
+    groups.forEach(group => {
 
         const element =
             document.createElement("article");
@@ -360,139 +393,233 @@ function render() {
 
 
         // =================================
-        // PHOTO
+        // 슬라이드
         // =================================
 
-        if (item.type === "photo") {
+        const slider =
+            document.createElement("div");
 
-            element.innerHTML = `
+        slider.className = "media-slider";
 
-                <div
-                    class="media"
-                    onclick="openImage('${item.file}')"
-                >
 
-                    <img
-                        src="${item.file}"
-                        alt="${item.title}"
+        const track =
+            document.createElement("div");
+
+        track.className = "media-track";
+
+
+        group.items.forEach(item => {
+
+            const slide =
+                document.createElement("div");
+
+            slide.className = "media-slide";
+
+
+            // PHOTO
+            if (item.type === "photo") {
+
+                slide.innerHTML = `
+
+                    <div
+                        class="media"
+                        onclick="openImage('${item.file}')"
                     >
-
-                </div>
-
-                <div class="info">
-
-                    <div class="title">
-                        ${item.title}
-                    </div>
-
-                    <div class="date">
-                        ${formatDate(item.date)}
-                    </div>
-
-                    <div class="type">
-                        ${translations[currentLanguage].photo}
-                    </div>
-
-                </div>
-
-            `;
-
-        }
-
-
-        // =================================
-        // VIDEO
-        // =================================
-
-        else if (item.type === "video") {
-
-            element.innerHTML = `
-
-                <div class="media">
-
-                    <video
-                        src="${item.file}"
-                        controls
-                        playsinline
-                    ></video>
-
-                </div>
-
-                <div class="info">
-
-                    <div class="title">
-                        ${item.title}
-                    </div>
-
-                    <div class="date">
-                        ${formatDate(item.date)}
-                    </div>
-
-                    <div class="type">
-                        ${translations[currentLanguage].video}
-                    </div>
-
-                </div>
-
-            `;
-
-        }
-
-
-        // =================================
-        // REELS
-        // =================================
-
-        else if (item.type === "reels") {
-
-            element.innerHTML = `
-
-                <a
-                    class="reels-link"
-                    href="${item.link}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <div class="media">
 
                         <img
                             src="${item.file}"
                             alt="${item.title}"
                         >
 
-                        <span class="reels-label">
-                            ${translations[currentLanguage].reels} ↗
-                        </span>
+                    </div>
+
+                `;
+
+            }
+
+
+            // VIDEO
+            else if (item.type === "video") {
+
+                slide.innerHTML = `
+
+                    <div class="media">
+
+                        <video
+                            src="${item.file}"
+                            controls
+                            playsinline
+                        ></video>
 
                     </div>
 
-                </a>
+                `;
 
-                <div class="info">
+            }
 
-                    <div class="title">
-                        ${item.title}
-                    </div>
 
-                    <div class="date">
-                        ${formatDate(item.date)}
-                    </div>
+            // REELS
+            else if (item.type === "reels") {
 
-                    <div class="type">
-                        ${translations[currentLanguage].reels}
-                    </div>
+                slide.innerHTML = `
 
-                </div>
+                    <a
+                        class="reels-link"
+                        href="${item.link}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
 
-            `;
+                        <div class="media">
+
+                            <img
+                                src="${item.file}"
+                                alt="${item.title}"
+                            >
+
+                            <span class="reels-label">
+                                ${translations[currentLanguage].reels} ↗
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                `;
+
+            }
+
+
+            track.appendChild(slide);
+
+        });
+
+
+        slider.appendChild(track);
+
+
+        // =================================
+        // 슬라이드 점
+        // =================================
+
+        if (group.items.length > 1) {
+
+            const dots =
+                document.createElement("div");
+
+            dots.className = "slider-dots";
+
+
+            group.items.forEach((item, index) => {
+
+                const dot =
+                    document.createElement("span");
+
+                dot.className = "slider-dot";
+
+                if (index === 0) {
+                    dot.classList.add("active");
+                }
+
+                dots.appendChild(dot);
+
+            });
+
+
+            slider.appendChild(dots);
+
+
+            // 현재 슬라이드 표시
+            track.addEventListener(
+                "scroll",
+                function() {
+
+                    const width =
+                        slider.clientWidth;
+
+                    const current =
+                        Math.round(
+                            track.scrollLeft / width
+                        );
+
+
+                    dots
+                        .querySelectorAll(".slider-dot")
+                        .forEach((dot, index) => {
+
+                            dot.classList.toggle(
+                                "active",
+                                index === current
+                            );
+
+                        });
+
+                }
+            );
 
         }
 
 
+        element.appendChild(slider);
+
+
+        // =================================
+        // 정보
+        // =================================
+
+        const info =
+            document.createElement("div");
+
+        info.className = "info";
+
+
+        const firstItem =
+            group.items[0];
+
+
+        info.innerHTML = `
+
+            <div class="title">
+                ${firstItem.title}
+            </div>
+
+            <div class="date">
+                ${formatDate(group.date)}
+            </div>
+
+            <div class="type">
+                ${getGroupTypeText(group.items)}
+            </div>
+
+        `;
+
+
+        element.appendChild(info);
+
         archive.appendChild(element);
 
     });
+
+}
+
+
+// =================================
+// 여러 자료의 타입 표시
+// =================================
+
+function getGroupTypeText(groupItems) {
+
+    const types =
+        [...new Set(
+            groupItems.map(item => item.type)
+        )];
+
+
+    return types
+        .map(type =>
+            translations[currentLanguage][type]
+        )
+        .join(" · ");
 
 }
 
@@ -629,14 +756,12 @@ function changeLanguage(language) {
     currentLanguage = language;
 
 
-    // 선택 언어 저장
     localStorage.setItem(
         "ttybelle-language",
         language
     );
 
 
-    // 현재 언어 버튼
     const currentFlag =
         document.getElementById("currentFlag");
 
@@ -660,7 +785,6 @@ function changeLanguage(language) {
     }
 
 
-    // 언어 메뉴 active
     document
         .querySelectorAll(".language-option")
         .forEach(option => {
@@ -683,15 +807,11 @@ function changeLanguage(language) {
     }
 
 
-    // UI 번역
     applyTranslations();
 
-
-    // 게시물 다시 표시
     render();
 
 
-    // 메뉴 닫기
     const menu =
         document.getElementById("languageMenu");
 
