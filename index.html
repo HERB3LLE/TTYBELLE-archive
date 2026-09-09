@@ -37,38 +37,124 @@
     </header>
 
 
-    <!-- 카테고리 -->
-    <nav class="categories">
+    <!-- 카테고리 + 언어 -->
+    <div class="category-language-row">
 
-        <button
-            class="category active"
-            onclick="filterItems('all', this)"
-        >
-            ALL
-        </button>
+        <nav class="categories">
 
-        <button
-            class="category"
-            onclick="filterItems('photo', this)"
-        >
-            PHOTO
-        </button>
+            <button
+                class="category active"
+                onclick="filterItems('all', this)"
+                data-i18n="all"
+            >
+                ALL
+            </button>
 
-        <button
-            class="category"
-            onclick="filterItems('video', this)"
-        >
-            VIDEO
-        </button>
+            <button
+                class="category"
+                onclick="filterItems('photo', this)"
+                data-i18n="photo"
+            >
+                PHOTO
+            </button>
 
-        <button
-            class="category"
-            onclick="filterItems('reels', this)"
-        >
-            REELS
-        </button>
+            <button
+                class="category"
+                onclick="filterItems('video', this)"
+                data-i18n="video"
+            >
+                VIDEO
+            </button>
 
-    </nav>
+            <button
+                class="category"
+                onclick="filterItems('reels', this)"
+                data-i18n="reels"
+            >
+                REELS
+            </button>
+
+        </nav>
+
+
+        <!-- 언어 선택 -->
+        <div class="language-selector">
+
+            <button
+                class="language-button"
+                id="languageButton"
+                onclick="toggleLanguageMenu()"
+                aria-label="Language"
+            >
+                <span
+                    class="language-flag"
+                    id="currentFlag"
+                >🇰🇷</span>
+
+                <span
+                    class="language-name"
+                    id="currentLanguage"
+                >한국어</span>
+
+                <span class="language-arrow">⌄</span>
+            </button>
+
+
+            <div
+                class="language-menu"
+                id="languageMenu"
+            >
+
+                <button
+                    class="language-option active"
+                    onclick="changeLanguage('ko')"
+                    data-language="ko"
+                >
+                    <span class="option-flag">🇰🇷</span>
+                    <span>한국어</span>
+                </button>
+
+                <button
+                    class="language-option"
+                    onclick="changeLanguage('en')"
+                    data-language="en"
+                >
+                    <span class="option-flag">🇺🇸</span>
+                    <span>English</span>
+                </button>
+
+                <button
+                    class="language-option"
+                    onclick="changeLanguage('ja')"
+                    data-language="ja"
+                >
+                    <span class="option-flag">🇯🇵</span>
+                    <span>日本語</span>
+                </button>
+
+                <button
+                    class="language-option"
+                    onclick="changeLanguage('zh')"
+                    data-language="zh"
+                >
+                    <span class="option-flag">🇨🇳</span>
+                    <span>中文</span>
+                </button>
+
+                <button
+                    class="language-option"
+                    onclick="changeLanguage('th')"
+                    data-language="th"
+                >
+                    <span class="option-flag">🇹🇭</span>
+                    <span>ไทย</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 
 
     <!-- 검색 / 정렬 -->
@@ -85,8 +171,19 @@
             id="sort"
             onchange="changeSort()"
         >
-            <option value="new">최신순</option>
-            <option value="old">과거순</option>
+            <option
+                value="new"
+                data-i18n="newest"
+            >
+                최신순
+            </option>
+
+            <option
+                value="old"
+                data-i18n="oldest"
+            >
+                과거순
+            </option>
         </select>
 
     </section>
