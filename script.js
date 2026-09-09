@@ -117,6 +117,41 @@ let items = [
         file: "0ECD77F3-6127-4770-B63E-339979C5CBFA.jpeg"
     },
 
+{
+        type: "photo",
+        date: "2024-05-30",
+        title: "NATTY DAY",
+        file: "E0AA6CE1-DA10-445B-8860-0BE8EC576915.jpeg"
+    },
+
+    {
+        type: "photo",
+        date: "2024-05-30",
+        title: "NATTY DAY",
+        file: "33E3D79F-C62F-4E15-B046-FCEDA33B5DA1.jpeg"
+    },
+
+    {
+        type: "photo",
+        date: "2024-05-30",
+        title: "NATTY DAY",
+        file: "4C315378-7E26-4BEE-B1D7-91D10658A853.jpeg"
+    },
+
+ {
+        type: "photo",
+        date: "2026-05-23",
+        title: "상하이 데이트",
+        file: "6182A261-1403-4495-B716-EE9E75730947.jpeg"
+    },
+    
+     {
+        type: "photo",
+        date: "2026-05-23",
+        title: "상하이 데이트",
+        file: "E7CE2135-9AD8-4D24-A53C-C0E70456C7D0.jpeg"
+    },
+
 ];
 
 // =================================
