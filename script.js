@@ -4,7 +4,6 @@
 
 let items = [
 
-    // 사진
     {
         type: "photo",
         date: "2023-12-11",
@@ -160,9 +159,7 @@ let items = [
 // =================================
 
 let currentFilter = "all";
-
 let currentSort = "new";
-
 let searchText = "";
 
 
@@ -173,14 +170,14 @@ let searchText = "";
 const translations = {
 
     ko: {
-        all: "ALL",
-        photo: "PHOTO",
-        video: "VIDEO",
-        reels: "REELS",
-        search: "Search",
+        all: "전체",
+        photo: "사진",
+        video: "영상",
+        reels: "릴스",
+        search: "검색",
         newest: "최신순",
         oldest: "과거순",
-        empty: "No archive found."
+        empty: "자료가 없습니다."
     },
 
     en: {
@@ -209,7 +206,7 @@ const translations = {
         all: "全部",
         photo: "图片",
         video: "视频",
-        reels: "Reels",
+        reels: "短视频",
         search: "搜索",
         newest: "最新",
         oldest: "最早",
@@ -328,9 +325,7 @@ function render() {
             new Date(b.date);
 
         if (currentSort === "new") {
-
             return dateB - dateA;
-
         }
 
         return dateA - dateB;
@@ -467,7 +462,7 @@ function render() {
                         >
 
                         <span class="reels-label">
-                            REELS ↗
+                            ${translations[currentLanguage].reels} ↗
                         </span>
 
                     </div>
@@ -514,9 +509,7 @@ function filterItems(type, button) {
     document
         .querySelectorAll(".category")
         .forEach(btn => {
-
             btn.classList.remove("active");
-
         });
 
 
@@ -636,7 +629,7 @@ function changeLanguage(language) {
     currentLanguage = language;
 
 
-    // 저장
+    // 선택 언어 저장
     localStorage.setItem(
         "ttybelle-language",
         language
@@ -650,14 +643,24 @@ function changeLanguage(language) {
     const currentLanguageElement =
         document.getElementById("currentLanguage");
 
-    currentFlag.textContent =
-        languageInfo[language].flag;
 
-    currentLanguageElement.textContent =
-        languageInfo[language].name;
+    if (currentFlag) {
+
+        currentFlag.textContent =
+            languageInfo[language].flag;
+
+    }
 
 
-    // 언어 메뉴 active 표시
+    if (currentLanguageElement) {
+
+        currentLanguageElement.textContent =
+            languageInfo[language].name;
+
+    }
+
+
+    // 언어 메뉴 active
     document
         .querySelectorAll(".language-option")
         .forEach(option => {
@@ -672,8 +675,11 @@ function changeLanguage(language) {
             `.language-option[data-language="${language}"]`
         );
 
+
     if (selectedOption) {
+
         selectedOption.classList.add("active");
+
     }
 
 
@@ -686,15 +692,20 @@ function changeLanguage(language) {
 
 
     // 메뉴 닫기
-    document
-        .getElementById("languageMenu")
-        .classList.remove("show");
+    const menu =
+        document.getElementById("languageMenu");
+
+    if (menu) {
+
+        menu.classList.remove("show");
+
+    }
 
 }
 
 
 // =================================
-// UI 번역 적용
+// UI 번역
 // =================================
 
 function applyTranslations() {
@@ -722,6 +733,7 @@ function applyTranslations() {
 
     const search =
         document.getElementById("search");
+
 
     if (search) {
 
@@ -755,6 +767,7 @@ document.addEventListener(
                 "languageMenu"
             );
 
+
         if (
             selector &&
             menu &&
@@ -777,7 +790,6 @@ document.addEventListener(
     "DOMContentLoaded",
     function() {
 
-        // 저장된 언어 적용
         changeLanguage(currentLanguage);
 
     }
