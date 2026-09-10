@@ -185,7 +185,7 @@ let items = [
         date: "2025-10-29",
         title: "백석문화대학교",
         file: "32F43EB5-50A9-42F0-86EE-074A8225DEE5.jpeg"
-    }
+    },
 
     {
         type: "photo",
