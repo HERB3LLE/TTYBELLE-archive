@@ -151,6 +151,13 @@ let items = [
         file: "E7CE2135-9AD8-4D24-A53C-C0E70456C7D0.jpeg"
     }
 
+{
+        type: "photo",
+        date: "2025-10-29",
+        title: "연고지",
+        file: "1910FEFC-3249-4258-BA02-01E3B3ABA567.jpeg"
+    },
+
 ];
 
 
