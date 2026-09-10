@@ -149,7 +149,7 @@ let items = [
         date: "2026-05-23",
         title: "상하이 데이트",
         file: "E7CE2135-9AD8-4D24-A53C-C0E70456C7D0.jpeg"
-    }
+    },
 
 {
         type: "photo",
