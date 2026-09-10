@@ -3,18 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>TTYBELLE ARCHIVE</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- 헤더 -->
-    <header class="header">
-        <div class="profile">
-            <img src="Untitled45_20260901012016.png" alt="Belle">
-            <div class="profile-name">벨디</div>
+    <!-- 대표 이미지 -->
+    <section class="hero">
+        <img
+            src="9DB06884-25D8-4302-8771-F987BEF77670.jpeg"
+            alt="KISS OF LIFE NATTY BELLE"
+        >
+
+        <div class="hero-text">
+            KISSOFLIFE<br>
+            NATTY BELLE
         </div>
+    </section>
+
+
+    <!-- 사이트 제목 -->
+    <header class="header">
+
+        <h1>TTYBELLE ARCHIVE</h1>
+
+        <p class="description">
+            KISS OF LIFE NATTY & BELLE
+        </p>
+
     </header>
 
 
@@ -22,12 +41,43 @@
     <div class="category-language-row">
 
         <nav class="categories">
-            <button class="category active" data-category="all" data-i18n="all">전체</button>
-            <button class="category" data-category="photo" data-i18n="photo">사진</button>
-            <button class="category" data-category="video" data-i18n="video">영상</button>
-            <button class="category" data-category="reels" data-i18n="reels">릴스</button>
+
+            <button
+                class="category active"
+                onclick="filterItems('all', this)"
+                data-i18n="all"
+            >
+                ALL
+            </button>
+
+            <button
+                class="category"
+                onclick="filterItems('photo', this)"
+                data-i18n="photo"
+            >
+                PHOTO
+            </button>
+
+            <button
+                class="category"
+                onclick="filterItems('video', this)"
+                data-i18n="video"
+            >
+                VIDEO
+            </button>
+
+            <button
+                class="category"
+                onclick="filterItems('reels', this)"
+                data-i18n="reels"
+            >
+                REELS
+            </button>
+
         </nav>
 
+
+        <!-- 언어 선택 -->
         <div class="language-selector">
 
             <button
@@ -36,12 +86,24 @@
                 onclick="toggleLanguageMenu()"
                 aria-label="Language"
             >
-                <span class="language-flag" id="currentFlag">🇰🇷</span>
-                <span class="language-name" id="currentLanguage">한국어</span>
+                <span
+                    class="language-flag"
+                    id="currentFlag"
+                >🇰🇷</span>
+
+                <span
+                    class="language-name"
+                    id="currentLanguage"
+                >한국어</span>
+
                 <span class="language-arrow">⌄</span>
             </button>
 
-            <div class="language-menu" id="languageMenu">
+
+            <div
+                class="language-menu"
+                id="languageMenu"
+            >
 
                 <button
                     class="language-option active"
@@ -89,6 +151,7 @@
                 </button>
 
             </div>
+
         </div>
 
     </div>
@@ -97,84 +160,63 @@
     <!-- 검색 / 정렬 -->
     <section class="tools">
 
-        <div class="search-box">
-            <input
-                type="text"
-                id="searchInput"
-                data-i18n-placeholder="search"
-                placeholder="검색"
+        <input
+            id="search"
+            type="search"
+            placeholder="Search"
+            oninput="searchItems()"
+        >
+
+        <select
+            id="sort"
+            onchange="changeSort()"
+        >
+            <option
+                value="new"
+                data-i18n="newest"
             >
-        </div>
-
-        <div class="sort-buttons">
-            <button id="newestBtn" class="sort active" data-i18n="newest">
                 최신순
-            </button>
+            </option>
 
-            <button id="oldestBtn" class="sort" data-i18n="oldest">
+            <option
+                value="old"
+                data-i18n="oldest"
+            >
                 과거순
-            </button>
-        </div>
+            </option>
+        </select>
 
     </section>
 
 
-    <!-- 아카이브 -->
-    <main class="archive" id="archive"></main>
+    <!-- 자료 -->
+    <main
+        id="archive"
+        class="archive"
+    ></main>
 
 
-    <!-- 이미지 확대 -->
-    <div class="modal" id="imageModal">
+    <!-- 사진 확대 -->
+    <div
+        id="imageModal"
+        class="modal"
+        onclick="closeModal()"
+    >
 
-        <button class="modal-close" id="modalClose">×</button>
+        <button
+            class="close"
+            onclick="closeModal()"
+        >
+            ×
+        </button>
 
-        <img id="modalImage" src="" alt="">
+        <img
+            id="modalImage"
+            src=""
+            alt=""
+        >
 
     </div>
-
-
-    <!-- 푸터 -->
-    <footer class="footer">
-
-        <div class="footer-inner">
-
-            <div class="footer-left">
-                <span>© 2026 TTYBELLE</span>
-                <span>·</span>
-                <span>HERB3LLE</span>
-            </div>
-
-            <div class="footer-links">
-
-                <a
-                    href="https://x.com/herb3lle?s=11"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    X
-                </a>
-
-                <a
-                    href="https://spin-spin.com/HERB3LLE"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Spin
-                </a>
-
-                <a
-                    href="https://curious.quizby.me/herb3lle"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Curious
-                </a>
-
-            </div>
-
-        </div>
-
-    </footer>
 
 
     <script src="script.js"></script>
