@@ -165,6 +165,20 @@ let items = [
         file: "IMG_8274.jpeg"
     },
 
+{
+        type: "photo",
+        date: "2023-07-15",
+        title: "뮤직뱅크 behind photo",
+        file: "D99DDFCB-4BAD-4173-A934-F99EA726A9E0.jpeg"
+    },
+
+{
+        type: "photo",
+        date: "2023-07-15",
+        title: "뮤직뱅크 behind photo",
+        file: "12F91D23-0DDE-4CB2-B10B-FE716C2D9479.jpeg"
+    },
+
 ];
 
 
