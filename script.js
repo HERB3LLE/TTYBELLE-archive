@@ -187,6 +187,13 @@ let items = [
         file: "32F43EB5-50A9-42F0-86EE-074A8225DEE5.jpeg"
     }
 
+    {
+        type: "photo",
+        date: "2025-09-25",
+        title: "숭실대학교",
+        file: "F5F840C6-37DF-44DE-A8DA-05B5A9AA6566.jpeg"
+    }
+
 ];
 
 
