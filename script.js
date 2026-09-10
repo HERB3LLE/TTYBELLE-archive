@@ -179,6 +179,13 @@ let items = [
         file: "12F91D23-0DDE-4CB2-B10B-FE716C2D9479.jpeg"
     },
 
+{
+        type: "photo",
+        date: "2025-07-05",
+        title: "띠가 받은 특별한 선물🎁 벨디와의 셀카"
+        file: "68F6127C-1305-415F-BE1F-C0A8B710C876.jpeg"
+    },
+
 ];
 
 
