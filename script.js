@@ -151,47 +151,48 @@ let items = [
         file: "E7CE2135-9AD8-4D24-A53C-C0E70456C7D0.jpeg"
     },
 
-{
+    {
         type: "photo",
         date: "2025-10-29",
         title: "연고지",
         file: "1910FEFC-3249-4258-BA02-01E3B3ABA567.jpeg"
     },
 
-{
+    {
         type: "photo",
         date: "2026-08-22",
         title: "음악중심 behind photo",
         file: "IMG_8274.jpeg"
     },
 
-{
+    {
         type: "photo",
         date: "2023-07-15",
         title: "뮤직뱅크 behind photo",
         file: "D99DDFCB-4BAD-4173-A934-F99EA726A9E0.jpeg"
     },
 
-{
+    {
         type: "photo",
         date: "2023-07-15",
         title: "뮤직뱅크 behind photo",
         file: "12F91D23-0DDE-4CB2-B10B-FE716C2D9479.jpeg"
     },
 
-{
+    {
         type: "photo",
         date: "2025-07-05",
         title: "띠가 받은 특별한 선물🎁 벨디와의 셀카",
         file: "68F6127C-1305-415F-BE1F-C0A8B710C876.jpeg"
     },
 
-{
+    {
+        postId: "baekseok",
         type: "photo",
         date: "2025-10-29",
         title: "백석문화대학교",
         file: "32F43EB5-50A9-42F0-86EE-074A8225DEE5.jpeg"
-    },
+    }
 
 ];
 
@@ -312,29 +313,47 @@ let currentLanguage =
 
 
 // =================================
-// 날짜별 그룹 만들기
+// 날짜별 / 게시물별 그룹 만들기
 // =================================
 
 function groupByDate(data) {
 
     const groups = {};
+    const order = [];
 
     data.forEach(item => {
 
-        if (!groups[item.date]) {
-            groups[item.date] = [];
+        /*
+         * postId가 있는 경우
+         * 같은 postId끼리 하나의 포스트로 묶음
+         *
+         * postId가 없는 경우
+         * 기존처럼 같은 날짜끼리 묶음
+         */
+
+        const key = item.postId
+            ? `post-${item.postId}`
+            : `date-${item.date}`;
+
+
+        if (!groups[key]) {
+
+            groups[key] = {
+                date: item.date,
+                items: []
+            };
+
+            order.push(key);
+
         }
 
-        groups[item.date].push(item);
+
+        groups[key].items.push(item);
 
     });
 
-    return Object.entries(groups).map(
-        ([date, groupItems]) => ({
-            date,
-            items: groupItems
-        })
-    );
+
+    return order.map(key => groups[key]);
 
 }
 
@@ -351,7 +370,10 @@ function render() {
     let filteredItems = [...items];
 
 
+    // =================================
     // 카테고리 필터
+    // =================================
+
     if (currentFilter !== "all") {
 
         filteredItems =
@@ -363,7 +385,10 @@ function render() {
     }
 
 
+    // =================================
     // 검색
+    // =================================
+
     if (searchText.trim() !== "") {
 
         const keyword =
@@ -385,12 +410,18 @@ function render() {
     }
 
 
-    // 날짜별 그룹
+    // =================================
+    // 날짜 / 게시물 그룹
+    // =================================
+
     let groups =
         groupByDate(filteredItems);
 
 
+    // =================================
     // 최신순 / 과거순
+    // =================================
+
     groups.sort((a, b) => {
 
         const dateA =
@@ -400,7 +431,9 @@ function render() {
             new Date(b.date);
 
         if (currentSort === "new") {
+
             return dateB - dateA;
+
         }
 
         return dateA - dateB;
@@ -411,7 +444,10 @@ function render() {
     archive.innerHTML = "";
 
 
+    // =================================
     // 자료 없음
+    // =================================
+
     if (groups.length === 0) {
 
         archive.innerHTML = `
@@ -425,7 +461,10 @@ function render() {
     }
 
 
-    // 날짜별 카드 만들기
+    // =================================
+    // 포스트 카드 만들기
+    // =================================
+
     groups.forEach(group => {
 
         const element =
@@ -458,7 +497,10 @@ function render() {
             slide.className = "media-slide";
 
 
+            // =================================
             // PHOTO
+            // =================================
+
             if (item.type === "photo") {
 
                 slide.innerHTML = `
@@ -480,7 +522,10 @@ function render() {
             }
 
 
+            // =================================
             // VIDEO
+            // =================================
+
             else if (item.type === "video") {
 
                 slide.innerHTML = `
@@ -500,7 +545,10 @@ function render() {
             }
 
 
+            // =================================
             // REELS
+            // =================================
+
             else if (item.type === "reels") {
 
                 slide.innerHTML = `
@@ -559,9 +607,13 @@ function render() {
 
                 dot.className = "slider-dot";
 
+
                 if (index === 0) {
+
                     dot.classList.add("active");
+
                 }
+
 
                 dots.appendChild(dot);
 
@@ -571,13 +623,17 @@ function render() {
             slider.appendChild(dots);
 
 
+            // =================================
             // 현재 슬라이드 표시
+            // =================================
+
             track.addEventListener(
                 "scroll",
                 function() {
 
                     const width =
                         slider.clientWidth;
+
 
                     const current =
                         Math.round(
@@ -678,7 +734,9 @@ function filterItems(type, button) {
     document
         .querySelectorAll(".category")
         .forEach(btn => {
+
             btn.classList.remove("active");
+
         });
 
 
@@ -795,15 +853,19 @@ function changeLanguage(language) {
         return;
     }
 
-    currentLanguage = language;
+
+    currentLanguage =
+        language;
 
 
+    // 선택 언어 저장
     localStorage.setItem(
         "ttybelle-language",
         language
     );
 
 
+    // 현재 언어 버튼
     const currentFlag =
         document.getElementById("currentFlag");
 
@@ -827,6 +889,7 @@ function changeLanguage(language) {
     }
 
 
+    // 언어 메뉴 active
     document
         .querySelectorAll(".language-option")
         .forEach(option => {
@@ -849,13 +912,18 @@ function changeLanguage(language) {
     }
 
 
+    // UI 번역
     applyTranslations();
 
+
+    // 게시물 다시 표시
     render();
 
 
+    // 메뉴 닫기
     const menu =
         document.getElementById("languageMenu");
+
 
     if (menu) {
 
@@ -882,6 +950,7 @@ function applyTranslations() {
 
             const key =
                 element.dataset.i18n;
+
 
             if (language[key]) {
 
