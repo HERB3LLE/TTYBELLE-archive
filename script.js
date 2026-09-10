@@ -158,6 +158,13 @@ let items = [
         file: "1910FEFC-3249-4258-BA02-01E3B3ABA567.jpeg"
     },
 
+{
+        type: "photo",
+        date: "2026-08-22",
+        title: "음악중심 behind photo",
+        file: "IMG_8274.jpeg"
+    },
+
 ];
 
 
