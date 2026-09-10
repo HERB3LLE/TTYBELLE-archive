@@ -769,3 +769,84 @@ body {
 .slider-dot.active {
     background: #ffffff;
 }
+
+/* =================================
+   푸터
+================================= */
+
+.footer {
+    width: 100%;
+    background: #ffffff;
+    color: #111111;
+    border-top: 1px solid #eeeeee;
+}
+
+.footer-inner {
+    width: calc(100% - 28px);
+    min-height: 150px;
+
+    margin: 0 auto;
+    padding: 28px 0;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.footer-left {
+    color: #999999;
+
+    font-size: 8px;
+
+    letter-spacing: 0.2px;
+}
+
+.footer-links {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 7px;
+}
+
+.footer-links a {
+    color: #333333;
+
+    font-size: 10px;
+
+    line-height: 1.2;
+
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #999999;
+}
+
+
+/* =================================
+   푸터 - 작은 휴대폰
+================================= */
+
+@media (max-width: 360px) {
+
+    .footer-inner {
+        width: calc(100% - 20px);
+
+        min-height: 135px;
+
+        padding: 25px 0;
+    }
+
+    .footer-left {
+        font-size: 7px;
+    }
+
+    .footer-links a {
+        font-size: 9px;
+    }
+}
