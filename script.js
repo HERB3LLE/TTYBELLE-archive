@@ -204,7 +204,7 @@ let items = [
         date: "2023-08-13",
         title: "솔로곡 체인지🎤",
         file: "솔로곡 체인지🎤#KISSOFLIFE #키스오브라이프 #KIOF #NATTY #나띠 #BELLE #벨#Countdown #카운트다운 #Countdown_Challenge.mp4"
-    }
+    },
 
 ];
 
