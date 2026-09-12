@@ -194,13 +194,17 @@ let items = [
         file: "F5F840C6-37DF-44DE-A8DA-05B5A9AA6566.jpeg"
     },
 
-// 릴스
+
+    // =================================
+    // 릴스
+    // =================================
+
     {
         type: "reels",
         date: "2023-08-13",
         title: "솔로곡 체인지🎤",
         file: "솔로곡 체인지🎤#KISSOFLIFE #키스오브라이프 #KIOF #NATTY #나띠 #BELLE #벨#Countdown #카운트다운 #Countdown_Challenge.mp4"
-    },
+    }
 
 ];
 
@@ -544,6 +548,7 @@ function render() {
                             src="${item.file}"
                             controls
                             playsinline
+                            preload="metadata"
                         ></video>
 
                     </div>
@@ -561,27 +566,16 @@ function render() {
 
                 slide.innerHTML = `
 
-                    <a
-                        class="reels-link"
-                        href="${item.link}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+                    <div class="media">
 
-                        <div class="media">
+                        <video
+                            src="${item.file}"
+                            controls
+                            playsinline
+                            preload="metadata"
+                        ></video>
 
-                            <img
-                                src="${item.file}"
-                                alt="${item.title}"
-                            >
-
-                            <span class="reels-label">
-                                ${translations[currentLanguage].reels} ↗
-                            </span>
-
-                        </div>
-
-                    </a>
+                    </div>
 
                 `;
 
