@@ -206,6 +206,181 @@ let items = [
         file: "Number1.MP4"
     },
 
+    {
+        type: "reels",
+        date: "2023-09-21",
+        title: "Look at me🌹",
+        file: "Number2.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2023-12-14",
+        title: "😵‍💫나띠🔄벨🔄나띠🔄벨😵‍💫 지금이야‼️",
+        file: "Number3.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2023-12-17",
+        title: "키오프랑 함께할 크리스마스🎄가 기대되는거야☺️",
+        file: "Number4.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2023-12-26",
+        title: "아직 끝나지 않은 크리스마스🔔🎁",
+        file: "Number5.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2023-12-31",
+        title: "I know I’m NATTY…⁉️",
+        file: "Number6.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2024-01-13",
+        title: "태국 공주🇹🇭와 한국 공주🇰🇷의 얼굴 자랑 with 쉿 (Shhh) sped up Ver.",
+        file: "Number7.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2024-01-24",
+        title: "벨띠 얼굴 자랑하기🖤🩷",
+        file: "Number8.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2024-02-07",
+        title: "All I think about is you💋",
+        file: "Number9.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2024-03-28",
+        title: "나띠 X 벨 = ?",
+        file: "Number10.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2024-04-21",
+        title: "🩷🖤",
+        file: "Number11.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2024-08-21",
+        title: "💜🍎🩷",
+        file: "Number12.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2024-08-27",
+        title: "이 밤이 가기 전에🌙",
+        file: "Number13.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2024-11-03",
+        title: "진하게 화장을 하고💄",
+        file: "Number14.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2025-07-08",
+        title: "👀👀👀",
+        file: "Number15.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2025-09-02",
+        title: "POV: When KIOF meets KISSY💕",
+        file: "Number16.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2025-09-19",
+        title: "문학소녀들📖✏️",
+        file: "Number17.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2025-12-12",
+        title: "How to swing a golf club",
+        file: "Number18.MP4"
+    },
+    
+        {
+        type: "reels",
+        date: "2025-12-18",
+        title: "Body matcha🍵",
+        file: "Number19.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2025-12-27",
+        title: "띠벨의 단어 리듬 게임",
+        file: "Number20.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2026-03-16",
+        title: "빙글빙글 돌아가는 띠벨의 하루",
+        file: "Number21.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2026-04-12",
+        title: "who is she ⁉️",
+        file: "Number22.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2026-04-19",
+        title: "Twerk twerk",
+        file: "Number23.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2026-06-09",
+        title: "cha cha cha",
+        file: "Number24.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2026-07-10",
+        title: "띠벨즈 pegada🖤",
+        file: "Number25.MP4"
+    },
+
+    {
+        type: "reels",
+        date: "2026-08-09",
+        title: "please somebody help us name this dance move🙏🙏",
+        file: "Number26.MP4"
+    },
+
 ];
 
 
