@@ -723,7 +723,7 @@ function render() {
                             src="${item.file}"
                             controls
                             playsinline
-                            preload="auto"
+                            preload="metadata"
                         ></video>
 
                     </div>
@@ -747,7 +747,7 @@ function render() {
                             src="${item.file}"
                             controls
                             playsinline
-                            preload="auto"
+                            preload="metadata"
                         ></video>
 
                     </div>
