@@ -203,7 +203,7 @@ let items = [
         type: "reels",
         date: "2023-08-13",
         title: "솔로곡 체인지🎤",
-        file: "Number1.mp4"
+        file: "Number1.MP4"
     },
 
 ];
