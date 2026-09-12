@@ -194,9 +194,9 @@ let items = [
         file: "F5F840C6-37DF-44DE-A8DA-05B5A9AA6566.jpeg"
     },
 
-// 영상
+// 릴스
     {
-        type: "video",
+        type: "reels",
         date: "2023-08-13",
         title: "솔로곡 체인지🎤",
         file: "솔로곡 체인지🎤#KISSOFLIFE #키스오브라이프 #KIOF #NATTY #나띠 #BELLE #벨#Countdown #카운트다운 #Countdown_Challenge.mp4"
