@@ -203,182 +203,208 @@ let items = [
         type: "reels",
         date: "2023-08-13",
         title: "솔로곡 체인지🎤",
-        file: "Number1.MP4"
+        file: "Number1.MP4",
+        thumbnail: "Number1.png"
     },
 
     {
         type: "reels",
         date: "2023-09-21",
         title: "Look at me🌹",
-        file: "Number2.MP4"
+        file: "Number2.MP4",
+        thumbnail: "Number2.png"
     },
 
     {
         type: "reels",
         date: "2023-12-14",
         title: "😵‍💫나띠🔄벨🔄나띠🔄벨😵‍💫 지금이야‼️",
-        file: "Number3.MP4"
+        file: "Number3.MP4",
+        thumbnail: "Number3.png"
     },
 
     {
         type: "reels",
         date: "2023-12-17",
         title: "키오프랑 함께할 크리스마스🎄가 기대되는거야☺️",
-        file: "Number4.MP4"
+        file: "Number4.MP4",
+        thumbnail: "Number4.png"
     },
 
     {
         type: "reels",
         date: "2023-12-26",
         title: "아직 끝나지 않은 크리스마스🔔🎁",
-        file: "Number5.MP4"
+        file: "Number5.MP4",
+        thumbnail: "Number5.png"
     },
 
     {
         type: "reels",
         date: "2023-12-31",
         title: "I know I’m NATTY…⁉️",
-        file: "Number6.MP4"
+        file: "Number6.MP4",
+        thumbnail: "Number6.png"
     },
 
     {
         type: "reels",
         date: "2024-01-13",
         title: "태국 공주🇹🇭와 한국 공주🇰🇷의 얼굴 자랑 with 쉿 (Shhh) sped up Ver.",
-        file: "Number7.MP4"
+        file: "Number7.MP4",
+        thumbnail: "Number7.png"
     },
 
     {
         type: "reels",
         date: "2024-01-24",
         title: "벨띠 얼굴 자랑하기🖤🩷",
-        file: "Number8.MP4"
+        file: "Number8.MP4",
+        thumbnail: "Number8.png"
     },
 
     {
         type: "reels",
         date: "2024-02-07",
         title: "All I think about is you💋",
-        file: "Number9.MP4"
+        file: "Number9.MP4",
+        thumbnail: "Number9.png"
     },
 
     {
         type: "reels",
         date: "2024-03-28",
         title: "나띠 X 벨 = ?",
-        file: "Number10.MP4"
+        file: "Number10.MP4",
+        thumbnail: "Number10.png"
     },
 
     {
         type: "reels",
         date: "2024-04-21",
         title: "🩷🖤",
-        file: "Number11.MP4"
+        file: "Number11.MP4",
+        thumbnail: "Number11.png"
     },
 
     {
         type: "reels",
         date: "2024-08-21",
         title: "💜🍎🩷",
-        file: "Number12.MP4"
+        file: "Number12.MP4",
+        thumbnail: "Number12.png"
     },
 
     {
         type: "reels",
         date: "2024-08-27",
         title: "이 밤이 가기 전에🌙",
-        file: "Number13.MP4"
+        file: "Number13.MP4",
+        thumbnail: "Number13.png"
     },
 
     {
         type: "reels",
         date: "2024-11-03",
         title: "진하게 화장을 하고💄",
-        file: "Number14.MP4"
+        file: "Number14.MP4",
+        thumbnail: "Number14.png"
     },
 
     {
         type: "reels",
         date: "2025-07-08",
         title: "👀👀👀",
-        file: "Number15.MP4"
+        file: "Number15.MP4",
+        thumbnail: "Number15.png"
     },
 
     {
         type: "reels",
         date: "2025-09-02",
         title: "POV: When KIOF meets KISSY💕",
-        file: "Number16.MP4"
+        file: "Number16.MP4",
+        thumbnail: "Number16.png"
     },
 
     {
         type: "reels",
         date: "2025-09-19",
         title: "문학소녀들📖✏️",
-        file: "Number17.MP4"
+        file: "Number17.MP4",
+        thumbnail: "Number17.png"
     },
 
     {
         type: "reels",
         date: "2025-12-12",
         title: "How to swing a golf club",
-        file: "Number18.MP4"
+        file: "Number18.MP4",
+        thumbnail: "Number18.png"
     },
-    
-        {
+
+    {
         type: "reels",
         date: "2025-12-18",
         title: "Body matcha🍵",
-        file: "Number19.MP4"
+        file: "Number19.MP4",
+        thumbnail: "Number19.png"
     },
 
     {
         type: "reels",
         date: "2025-12-27",
         title: "띠벨의 단어 리듬 게임",
-        file: "Number20.MP4"
+        file: "Number20.MP4",
+        thumbnail: "Number20.png"
     },
 
     {
         type: "reels",
         date: "2026-03-16",
         title: "빙글빙글 돌아가는 띠벨의 하루",
-        file: "Number21.MP4"
+        file: "Number21.MP4",
+        thumbnail: "Number21.png"
     },
 
     {
         type: "reels",
         date: "2026-04-12",
         title: "who is she ⁉️",
-        file: "Number22.MP4"
+        file: "Number22.MP4",
+        thumbnail: "Number22.png"
     },
 
     {
         type: "reels",
         date: "2026-04-19",
         title: "Twerk twerk",
-        file: "Number23.MP4"
+        file: "Number23.MP4",
+        thumbnail: "Number23.png"
     },
 
     {
         type: "reels",
         date: "2026-06-09",
         title: "cha cha cha",
-        file: "Number24.MP4"
+        file: "Number24.MP4",
+        thumbnail: "Number24.png"
     },
 
     {
         type: "reels",
         date: "2026-07-10",
         title: "띠벨즈 pegada🖤",
-        file: "Number25.MP4"
+        file: "Number25.MP4",
+        thumbnail: "Number25.png"
     },
 
     {
         type: "reels",
         date: "2026-08-09",
         title: "please somebody help us name this dance move🙏🙏",
-        file: "Number26.MP4"
+        file: "Number26.MP4",
+        thumbnail: "Number26.png"
     },
 
 ];
@@ -509,14 +535,6 @@ function groupByDate(data) {
     const order = [];
 
     data.forEach(item => {
-
-        /*
-         * postId가 있는 경우
-         * 같은 postId끼리 하나의 포스트로 묶음
-         *
-         * postId가 없는 경우
-         * 기존처럼 같은 날짜끼리 묶음
-         */
 
         const key = item.postId
             ? `post-${item.postId}`
@@ -724,6 +742,7 @@ function render() {
                             controls
                             playsinline
                             preload="metadata"
+                            ${item.thumbnail ? `poster="${item.thumbnail}"` : ""}
                         ></video>
 
                     </div>
@@ -748,6 +767,7 @@ function render() {
                             controls
                             playsinline
                             preload="metadata"
+                            poster="${item.thumbnail}"
                         ></video>
 
                     </div>
@@ -1035,14 +1055,12 @@ function changeLanguage(language) {
         language;
 
 
-    // 선택 언어 저장
     localStorage.setItem(
         "ttybelle-language",
         language
     );
 
 
-    // 현재 언어 버튼
     const currentFlag =
         document.getElementById("currentFlag");
 
@@ -1066,7 +1084,6 @@ function changeLanguage(language) {
     }
 
 
-    // 언어 메뉴 active
     document
         .querySelectorAll(".language-option")
         .forEach(option => {
@@ -1089,15 +1106,12 @@ function changeLanguage(language) {
     }
 
 
-    // UI 번역
     applyTranslations();
 
 
-    // 게시물 다시 표시
     render();
 
 
-    // 메뉴 닫기
     const menu =
         document.getElementById("languageMenu");
 
