@@ -285,48 +285,6 @@ let items = [
         file: "IMG_8875.webp"
     },
 
-    {
-        type: "photo",
-        date: "2023-07-05",
-        title: "photocard",
-        file: "IMG_8952.jpeg"
-    },
-
-    {
-        type: "photo",
-        date: "2023-07-05",
-        title: "photocard",
-        file: "IMG_8937.jpeg"
-    },
-
-    {
-        type: "photo",
-        date: "2023-07-05",
-        title: "photocard",
-        file: "IMG_8960.jpeg"
-    },
-
-    {
-        type: "photo",
-        date: "2023-07-05",
-        title: "photocard",
-        file: "IMG_8948.jpeg"
-    },
-
-    {
-        type: "photo",
-        date: "2023-07-05",
-        title: "photocard",
-        file: "IMG_8953.jpeg"
-    },
-
-    {
-        type: "photo",
-        date: "2023-07-05",
-        title: "photocard",
-        file: "IMG_8962.jpeg"
-    },
-
     // =================================
     // 릴스
     // =================================
