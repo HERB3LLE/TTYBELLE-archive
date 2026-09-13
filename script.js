@@ -758,9 +758,14 @@ function render() {
 
                     <div class="media custom-video">
 
+                        <img
+                            class="video-thumbnail"
+                            src="${item.thumbnail}"
+                            alt=""
+                        >
+
                         <video
                             src="${item.file}"
-                            poster="${item.thumbnail}"
                             playsinline
                             preload="metadata"
                         ></video>
@@ -796,6 +801,9 @@ function render() {
                 const video =
                     slide.querySelector("video");
 
+                const thumbnail =
+                    slide.querySelector(".video-thumbnail");
+
                 const centerPlay =
                     slide.querySelector(".center-play");
 
@@ -807,6 +815,39 @@ function render() {
 
                 const fullscreenBtn =
                     slide.querySelector(".fullscreen-btn");
+
+
+                // =================================
+                // 썸네일로 복귀
+                // =================================
+
+                function resetToThumbnail() {
+
+                    video.pause();
+
+                    video.currentTime = 0;
+
+                    customVideo.classList.remove("playing");
+
+                    centerPlay.textContent = "▶";
+
+                    centerPlay.classList.remove("hidden");
+
+                    progressBar.style.width = "0%";
+
+                    thumbnail.style.display = "block";
+
+                    video.style.visibility = "hidden";
+
+                }
+
+
+                // =================================
+                // 다른 영상에서 사용할 수 있게 등록
+                // =================================
+
+                video.resetToThumbnail =
+                    resetToThumbnail;
 
 
                 // =================================
@@ -843,7 +884,7 @@ function render() {
 
 
                 // =================================
-                // 가운데 재생 버튼
+                // 가운데 ▶ 버튼
                 // =================================
 
                 centerPlay.addEventListener(
@@ -865,6 +906,10 @@ function render() {
                 video.addEventListener(
                     "play",
                     function() {
+
+                        thumbnail.style.display = "none";
+
+                        video.style.visibility = "visible";
 
                         centerPlay.classList.add("hidden");
 
@@ -900,17 +945,7 @@ function render() {
                     "ended",
                     function() {
 
-                        video.currentTime = 0;
-
-                        video.load();
-
-                        centerPlay.textContent = "▶";
-
-                        centerPlay.classList.remove("hidden");
-
-                        customVideo.classList.remove("playing");
-
-                        progressBar.style.width = "0%";
+                        resetToThumbnail();
 
                     }
                 );
@@ -996,6 +1031,13 @@ function render() {
 
                     }
                 );
+
+
+                // =================================
+                // 처음에는 썸네일 표시
+                // =================================
+
+                video.style.visibility = "hidden";
 
             }
 
@@ -1141,11 +1183,22 @@ document.addEventListener(
 
                 if (video !== event.target) {
 
-                    video.pause();
+                    if (
+                        typeof video.resetToThumbnail ===
+                        "function"
+                    ) {
 
-                    video.currentTime = 0;
+                        video.resetToThumbnail();
 
-                    video.load();
+                    }
+
+                    else {
+
+                        video.pause();
+
+                        video.currentTime = 0;
+
+                    }
 
                 }
 
