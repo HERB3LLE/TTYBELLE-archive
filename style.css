@@ -39,12 +39,64 @@ body {
     border-radius: 12px;
 }
 
-.hero img {
+
+/* =================================
+   대표 이미지 슬라이더
+================================= */
+
+.hero-slider {
+    display: flex;
+
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    overscroll-behavior-x: contain;
+
+    touch-action: pan-x;
+}
+
+.hero-slider::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* 각각의 헤더 사진 */
+
+.hero-slide {
+    flex: 0 0 100%;
+
+    width: 100%;
+
+    scroll-snap-align: start;
+
+    scroll-snap-stop: always;
+}
+
+
+/* 헤더 사진 */
+
+.hero-slide img {
     width: 100%;
     height: auto;
 
     display: block;
+
+    user-select: none;
+    -webkit-user-drag: none;
 }
+
+
+/* =================================
+   헤더 글씨
+================================= */
 
 .hero-text {
     position: absolute;
@@ -64,6 +116,8 @@ body {
 
     text-shadow:
         0 1px 5px rgba(0, 0, 0, 0.5);
+
+    pointer-events: none;
 }
 
 
