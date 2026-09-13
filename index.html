@@ -11,17 +11,32 @@
 
 <body>
 
-    <!-- 대표 이미지 -->
+    <!-- 대표 이미지 슬라이더 -->
     <section class="hero">
-        <img
-            src="9DB06884-25D8-4302-8771-F987BEF77670.jpeg"
-            alt="KISS OF LIFE NATTY BELLE"
-        >
+
+        <div class="hero-slider" id="heroSlider">
+
+            <div class="hero-slide">
+                <img
+                    src="9DB06884-25D8-4302-8771-F987BEF77670.jpeg"
+                    alt="KISS OF LIFE NATTY BELLE"
+                >
+            </div>
+
+            <div class="hero-slide">
+                <img
+                    src="86466DAC-2647-4786-BCA5-AC59039ED6BD.jpeg"
+                    alt="KISS OF LIFE NATTY BELLE"
+                >
+            </div>
+
+        </div>
 
         <div class="hero-text">
             KISSOFLIFE<br>
             NATTY BELLE
         </div>
+
     </section>
 
 
@@ -86,6 +101,7 @@
                 onclick="toggleLanguageMenu()"
                 aria-label="Language"
             >
+
                 <span
                     class="language-flag"
                     id="currentFlag"
@@ -97,6 +113,7 @@
                 >한국어</span>
 
                 <span class="language-arrow">⌄</span>
+
             </button>
 
 
@@ -171,6 +188,7 @@
             id="sort"
             onchange="changeSort()"
         >
+
             <option
                 value="new"
                 data-i18n="newest"
@@ -263,6 +281,61 @@
 
 
     <script src="script.js"></script>
+
+
+    <!-- 헤더 이미지 스와이프 -->
+    <script>
+
+        const heroSlider = document.getElementById("heroSlider");
+
+        let heroStartX = 0;
+        let heroStartY = 0;
+
+        heroSlider.addEventListener("touchstart", function(event) {
+
+            heroStartX = event.touches[0].clientX;
+            heroStartY = event.touches[0].clientY;
+
+        }, { passive: true });
+
+
+        heroSlider.addEventListener("touchend", function(event) {
+
+            const heroEndX = event.changedTouches[0].clientX;
+            const heroEndY = event.changedTouches[0].clientY;
+
+            const diffX = heroStartX - heroEndX;
+            const diffY = heroStartY - heroEndY;
+
+            /*
+             * 가로로 충분히 움직였을 때만
+             * 슬라이드를 넘김
+             */
+            if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
+
+                if (diffX > 0) {
+
+                    // 왼쪽으로 밀기 → 두 번째 사진
+                    heroSlider.scrollBy({
+                        left: heroSlider.clientWidth,
+                        behavior: "smooth"
+                    });
+
+                } else {
+
+                    // 오른쪽으로 밀기 → 첫 번째 사진
+                    heroSlider.scrollBy({
+                        left: -heroSlider.clientWidth,
+                        behavior: "smooth"
+                    });
+
+                }
+
+            }
+
+        }, { passive: true });
+
+    </script>
 
 </body>
 </html>
