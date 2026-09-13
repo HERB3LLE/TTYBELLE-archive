@@ -249,6 +249,13 @@ let items = [
         title: "원더케이",
         file: "C827F0BD-9985-4F74-B520-32FBCAB9118B.jpeg"
     },
+    
+    {
+        type: "photo",
+        date: "2025-12-15",
+        title: "Doja Cat concert",
+        file: "IMG_8871.jpeg"
+    },
 
     // =================================
     // 릴스
