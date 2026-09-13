@@ -495,7 +495,7 @@ let items = [
         title: "please somebody help us name this dance move🙏🙏",
         file: "Number26.MP4",
         thumbnail: "Number26.PNG"
-    }
+    },
 
     // =================================
     // 영상
