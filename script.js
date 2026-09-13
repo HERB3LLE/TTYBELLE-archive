@@ -765,20 +765,18 @@ function render() {
                             preload="metadata"
                         ></video>
 
-                        <div class="video-controls">
+                        <button
+                            class="center-play"
+                            type="button"
+                        >▶</button>
 
-                            <button
-                                class="play-btn"
-                                type="button"
-                            >▶</button>
+                        <div class="video-bottom">
 
-                            <input
-                                class="progress"
-                                type="range"
-                                min="0"
-                                max="100"
-                                value="0"
-                            >
+                            <div class="video-progress">
+
+                                <div class="video-progress-bar"></div>
+
+                            </div>
 
                             <button
                                 class="fullscreen-btn"
@@ -792,14 +790,20 @@ function render() {
                 `;
 
 
+                const customVideo =
+                    slide.querySelector(".custom-video");
+
                 const video =
                     slide.querySelector("video");
 
-                const playBtn =
-                    slide.querySelector(".play-btn");
+                const centerPlay =
+                    slide.querySelector(".center-play");
 
                 const progress =
-                    slide.querySelector(".progress");
+                    slide.querySelector(".video-progress");
+
+                const progressBar =
+                    slide.querySelector(".video-progress-bar");
 
                 const fullscreenBtn =
                     slide.querySelector(".fullscreen-btn");
@@ -809,24 +813,19 @@ function render() {
                 // 재생 / 일시정지
                 // =================================
 
-                playBtn.addEventListener(
-                    "click",
-                    function(event) {
+                function toggleVideo() {
 
-                        event.stopPropagation();
+                    if (video.paused) {
 
-                        if (video.paused) {
+                        video.play();
 
-                            video.play();
+                    } else {
 
-                        } else {
-
-                            video.pause();
-
-                        }
+                        video.pause();
 
                     }
-                );
+
+                }
 
 
                 // =================================
@@ -837,39 +836,57 @@ function render() {
                     "click",
                     function() {
 
-                        if (video.paused) {
-
-                            video.play();
-
-                        } else {
-
-                            video.pause();
-
-                        }
+                        toggleVideo();
 
                     }
                 );
 
 
                 // =================================
-                // 재생 상태
+                // 가운데 재생 버튼
+                // =================================
+
+                centerPlay.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.stopPropagation();
+
+                        toggleVideo();
+
+                    }
+                );
+
+
+                // =================================
+                // 재생 시작
                 // =================================
 
                 video.addEventListener(
                     "play",
                     function() {
 
-                        playBtn.textContent = "Ⅱ";
+                        centerPlay.classList.add("hidden");
+
+                        customVideo.classList.add("playing");
 
                     }
                 );
 
 
+                // =================================
+                // 일시정지
+                // =================================
+
                 video.addEventListener(
                     "pause",
                     function() {
 
-                        playBtn.textContent = "▶";
+                        centerPlay.textContent = "▶";
+
+                        centerPlay.classList.remove("hidden");
+
+                        customVideo.classList.remove("playing");
 
                     }
                 );
@@ -884,10 +901,16 @@ function render() {
                     function() {
 
                         video.currentTime = 0;
+
                         video.load();
 
-                        playBtn.textContent = "▶";
-                        progress.value = 0;
+                        centerPlay.textContent = "▶";
+
+                        centerPlay.classList.remove("hidden");
+
+                        customVideo.classList.remove("playing");
+
+                        progressBar.style.width = "0%";
 
                     }
                 );
@@ -903,9 +926,12 @@ function render() {
 
                         if (video.duration) {
 
-                            progress.value =
+                            const percent =
                                 (video.currentTime /
                                 video.duration) * 100;
+
+                            progressBar.style.width =
+                                percent + "%";
 
                         }
 
@@ -913,19 +939,29 @@ function render() {
                 );
 
 
+                // =================================
+                // 진행바 클릭
+                // =================================
+
                 progress.addEventListener(
-                    "input",
+                    "click",
                     function(event) {
 
                         event.stopPropagation();
 
-                        if (video.duration) {
-
-                            video.currentTime =
-                                (progress.value / 100) *
-                                video.duration;
-
+                        if (!video.duration) {
+                            return;
                         }
+
+                        const rect =
+                            progress.getBoundingClientRect();
+
+                        const percent =
+                            (event.clientX - rect.left) /
+                            rect.width;
+
+                        video.currentTime =
+                            percent * video.duration;
 
                     }
                 );
@@ -941,13 +977,16 @@ function render() {
 
                         event.stopPropagation();
 
+
                         if (
                             video.requestFullscreen
                         ) {
 
                             video.requestFullscreen();
 
-                        } else if (
+                        }
+
+                        else if (
                             video.webkitEnterFullscreen
                         ) {
 
