@@ -215,11 +215,18 @@ let items = [
         file: "IMG_8867.jpeg"
     },
     
-        {
+    {
         type: "photo",
         date: "2024-07-28",
         title: "Follow my lead, KISSY!📱",
         file: "CDE2E49D-5AA3-4A7C-A113-A5C6A1E33D5A.jpeg"
+    },
+
+    {
+        type: "photo",
+        date: "2023-09-22",
+        title: "벨띠의 비하인드샷!!! 사과머리 오때애??!!🍎🍎",
+        file: "27425A3F-521A-4319-BA3C-28C1CE9073D5.jpeg"
     },
 
     // =================================
