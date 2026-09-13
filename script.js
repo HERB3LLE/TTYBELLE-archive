@@ -519,14 +519,6 @@ let items = [
         thumbnail: "IMG_8972.jpeg"
     },
 
-    {
-        type: "video",
-        date: "2026-03-13",
-        title: "Today’s flight buddy ~✈️✈️👩‍❤️‍💋‍👩 🐶🫧💬",
-        file: "https://player.cloudinary.com/embed/?cloud_name=webxapyu&public_id=675ea1c24b34fbba365b61b8b4988b3b5fb104ca",
-        thumbnail: "IMG_8998.jpeg"
-    },
-
 ];
 
 
