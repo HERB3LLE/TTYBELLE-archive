@@ -200,8 +200,8 @@ let items = [
         title: "심플리 케이팝",
         file: "0216670F-BDE5-482A-A8BC-3303B988D9FA.jpeg"
     },
-    
-        {
+
+    {
         type: "photo",
         date: "2024-05-14",
         title: "Midas Touch Unreleased Photos",
@@ -214,7 +214,7 @@ let items = [
         title: "Midas Touch Unreleased Photos",
         file: "IMG_8867.jpeg"
     },
-    
+
     {
         type: "photo",
         date: "2024-07-28",
@@ -249,7 +249,7 @@ let items = [
         title: "원더케이",
         file: "C827F0BD-9985-4F74-B520-32FBCAB9118B.jpeg"
     },
-    
+
     {
         type: "photo",
         date: "2025-12-15",
@@ -263,7 +263,7 @@ let items = [
         title: "¸„.~˜¨ 🎀 𝐻𝒶𝓋𝑒 𝒶 𝓃𝒾𝒸𝑒 𝒹𝒶𝓎 🎀 ¨˜~.„¸",
         file: "IMG_8872.jpeg"
     },
-    
+
     {
         type: "photo",
         date: "2023-12-10",
@@ -284,6 +284,7 @@ let items = [
         title: "박소현의 러브게임",
         file: "IMG_8875.webp"
     },
+
 
     // =================================
     // 릴스
@@ -497,6 +498,7 @@ let items = [
         thumbnail: "Number26.PNG"
     },
 
+
     // =================================
     // 영상
     // =================================
@@ -507,7 +509,7 @@ let items = [
         title: "빙글빙글 돌아가는 띠벨의 하루 비하인드",
         file: "63aec40a0aac678da11cc60a61f7e4d5cf38dddf.mp4",
         thumbnail: "IMG_8970.jpeg"
-    },
+    }
 
 ];
 
@@ -663,6 +665,290 @@ function groupByDate(data) {
 
 
 // =================================
+// 커스텀 영상 기능
+// =================================
+
+function setupCustomVideo(slide) {
+
+    const customVideo =
+        slide.querySelector(".custom-video");
+
+    const video =
+        slide.querySelector("video");
+
+    const thumbnail =
+        slide.querySelector(".video-thumbnail");
+
+    const centerPlay =
+        slide.querySelector(".center-play");
+
+    const progress =
+        slide.querySelector(".video-progress");
+
+    const progressBar =
+        slide.querySelector(".video-progress-bar");
+
+    const fullscreenBtn =
+        slide.querySelector(".fullscreen-btn");
+
+
+    if (
+        !customVideo ||
+        !video ||
+        !thumbnail ||
+        !centerPlay ||
+        !progress ||
+        !progressBar ||
+        !fullscreenBtn
+    ) {
+        return;
+    }
+
+
+    // =================================
+    // 썸네일로 복귀
+    // =================================
+
+    function resetToThumbnail() {
+
+        video.pause();
+
+        try {
+            video.currentTime = 0;
+        } catch (error) {
+            // 무시
+        }
+
+        customVideo.classList.remove("playing");
+
+        centerPlay.textContent = "▶";
+
+        centerPlay.classList.remove("hidden");
+
+        progressBar.style.width = "0%";
+
+        thumbnail.style.display = "block";
+
+        video.style.visibility = "hidden";
+
+    }
+
+
+    // 다른 영상이 재생될 때 사용
+    video.resetToThumbnail =
+        resetToThumbnail;
+
+
+    // =================================
+    // 재생 / 일시정지
+    // =================================
+
+    function toggleVideo() {
+
+        if (video.paused) {
+
+            const playPromise =
+                video.play();
+
+            if (
+                playPromise &&
+                typeof playPromise.catch === "function"
+            ) {
+
+                playPromise.catch(() => {});
+
+            }
+
+        } else {
+
+            video.pause();
+
+        }
+
+    }
+
+
+    // =================================
+    // 영상 눌러서 재생 / 일시정지
+    // =================================
+
+    video.addEventListener(
+        "click",
+        function() {
+
+            toggleVideo();
+
+        }
+    );
+
+
+    // =================================
+    // 가운데 ▶ 버튼
+    // =================================
+
+    centerPlay.addEventListener(
+        "click",
+        function(event) {
+
+            event.stopPropagation();
+
+            toggleVideo();
+
+        }
+    );
+
+
+    // =================================
+    // 재생 시작
+    // =================================
+
+    video.addEventListener(
+        "play",
+        function() {
+
+            thumbnail.style.display = "none";
+
+            video.style.visibility = "visible";
+
+            centerPlay.classList.add("hidden");
+
+            customVideo.classList.add("playing");
+
+        }
+    );
+
+
+    // =================================
+    // 일시정지
+    // =================================
+
+    video.addEventListener(
+        "pause",
+        function() {
+
+            centerPlay.textContent = "▶";
+
+            centerPlay.classList.remove("hidden");
+
+            customVideo.classList.remove("playing");
+
+        }
+    );
+
+
+    // =================================
+    // 영상 끝나면 썸네일
+    // =================================
+
+    video.addEventListener(
+        "ended",
+        function() {
+
+            resetToThumbnail();
+
+        }
+    );
+
+
+    // =================================
+    // 진행바
+    // =================================
+
+    video.addEventListener(
+        "timeupdate",
+        function() {
+
+            if (
+                video.duration &&
+                isFinite(video.duration)
+            ) {
+
+                const percent =
+                    (video.currentTime /
+                    video.duration) * 100;
+
+                progressBar.style.width =
+                    percent + "%";
+
+            }
+
+        }
+    );
+
+
+    // =================================
+    // 진행바 클릭
+    // =================================
+
+    progress.addEventListener(
+        "click",
+        function(event) {
+
+            event.stopPropagation();
+
+            if (
+                !video.duration ||
+                !isFinite(video.duration)
+            ) {
+                return;
+            }
+
+            const rect =
+                progress.getBoundingClientRect();
+
+            const percent =
+                (event.clientX - rect.left) /
+                rect.width;
+
+            video.currentTime =
+                percent * video.duration;
+
+        }
+    );
+
+
+    // =================================
+    // 전체화면
+    // =================================
+
+    fullscreenBtn.addEventListener(
+        "click",
+        function(event) {
+
+            event.stopPropagation();
+
+            if (
+                typeof video.requestFullscreen ===
+                "function"
+            ) {
+
+                video.requestFullscreen();
+
+            }
+
+            else if (
+                typeof video.webkitEnterFullscreen ===
+                "function"
+            ) {
+
+                video.webkitEnterFullscreen();
+
+            }
+
+        }
+    );
+
+
+    // =================================
+    // 처음에는 썸네일
+    // =================================
+
+    video.style.visibility = "hidden";
+
+}
+
+
+// =================================
 // 화면 표시
 // =================================
 
@@ -766,7 +1052,7 @@ function render() {
 
 
     // =================================
-    // 포스트 카드 만들기
+    // 포스트 카드
     // =================================
 
     groups.forEach(group => {
@@ -834,18 +1120,46 @@ function render() {
 
                 slide.innerHTML = `
 
-                    <div class="media">
+                    <div class="media custom-video">
+
+                        <img
+                            class="video-thumbnail"
+                            src="${item.thumbnail || ""}"
+                            alt=""
+                        >
 
                         <video
                             src="${item.file}"
-                            ${item.thumbnail ? `poster="${item.thumbnail}"` : ""}
                             playsinline
                             preload="metadata"
                         ></video>
 
+                        <button
+                            class="center-play"
+                            type="button"
+                        >▶</button>
+
+                        <div class="video-bottom">
+
+                            <div class="video-progress">
+
+                                <div class="video-progress-bar"></div>
+
+                            </div>
+
+                            <button
+                                class="fullscreen-btn"
+                                type="button"
+                            >⛶</button>
+
+                        </div>
+
                     </div>
 
                 `;
+
+
+                setupCustomVideo(slide);
 
             }
 
@@ -897,249 +1211,7 @@ function render() {
                 `;
 
 
-                const customVideo =
-                    slide.querySelector(".custom-video");
-
-                const video =
-                    slide.querySelector("video");
-
-                const thumbnail =
-                    slide.querySelector(".video-thumbnail");
-
-                const centerPlay =
-                    slide.querySelector(".center-play");
-
-                const progress =
-                    slide.querySelector(".video-progress");
-
-                const progressBar =
-                    slide.querySelector(".video-progress-bar");
-
-                const fullscreenBtn =
-                    slide.querySelector(".fullscreen-btn");
-
-
-                // =================================
-                // 썸네일로 복귀
-                // =================================
-
-                function resetToThumbnail() {
-
-                    video.pause();
-
-                    video.currentTime = 0;
-
-                    customVideo.classList.remove("playing");
-
-                    centerPlay.textContent = "▶";
-
-                    centerPlay.classList.remove("hidden");
-
-                    progressBar.style.width = "0%";
-
-                    thumbnail.style.display = "block";
-
-                    video.style.visibility = "hidden";
-
-                }
-
-
-                // =================================
-                // 다른 영상에서 사용할 수 있게 등록
-                // =================================
-
-                video.resetToThumbnail =
-                    resetToThumbnail;
-
-
-                // =================================
-                // 재생 / 일시정지
-                // =================================
-
-                function toggleVideo() {
-
-                    if (video.paused) {
-
-                        video.play();
-
-                    } else {
-
-                        video.pause();
-
-                    }
-
-                }
-
-
-                // =================================
-                // 영상 화면 눌러서 재생 / 일시정지
-                // =================================
-
-                video.addEventListener(
-                    "click",
-                    function() {
-
-                        toggleVideo();
-
-                    }
-                );
-
-
-                // =================================
-                // 가운데 ▶ 버튼
-                // =================================
-
-                centerPlay.addEventListener(
-                    "click",
-                    function(event) {
-
-                        event.stopPropagation();
-
-                        toggleVideo();
-
-                    }
-                );
-
-
-                // =================================
-                // 재생 시작
-                // =================================
-
-                video.addEventListener(
-                    "play",
-                    function() {
-
-                        thumbnail.style.display = "none";
-
-                        video.style.visibility = "visible";
-
-                        centerPlay.classList.add("hidden");
-
-                        customVideo.classList.add("playing");
-
-                    }
-                );
-
-
-                // =================================
-                // 일시정지
-                // =================================
-
-                video.addEventListener(
-                    "pause",
-                    function() {
-
-                        centerPlay.textContent = "▶";
-
-                        centerPlay.classList.remove("hidden");
-
-                        customVideo.classList.remove("playing");
-
-                    }
-                );
-
-
-                // =================================
-                // 영상 끝나면 썸네일로 복귀
-                // =================================
-
-                video.addEventListener(
-                    "ended",
-                    function() {
-
-                        resetToThumbnail();
-
-                    }
-                );
-
-
-                // =================================
-                // 진행바
-                // =================================
-
-                video.addEventListener(
-                    "timeupdate",
-                    function() {
-
-                        if (video.duration) {
-
-                            const percent =
-                                (video.currentTime /
-                                video.duration) * 100;
-
-                            progressBar.style.width =
-                                percent + "%";
-
-                        }
-
-                    }
-                );
-
-
-                // =================================
-                // 진행바 클릭
-                // =================================
-
-                progress.addEventListener(
-                    "click",
-                    function(event) {
-
-                        event.stopPropagation();
-
-                        if (!video.duration) {
-                            return;
-                        }
-
-                        const rect =
-                            progress.getBoundingClientRect();
-
-                        const percent =
-                            (event.clientX - rect.left) /
-                            rect.width;
-
-                        video.currentTime =
-                            percent * video.duration;
-
-                    }
-                );
-
-
-                // =================================
-                // 전체화면
-                // =================================
-
-                fullscreenBtn.addEventListener(
-                    "click",
-                    function(event) {
-
-                        event.stopPropagation();
-
-
-                        if (
-                            video.requestFullscreen
-                        ) {
-
-                            video.requestFullscreen();
-
-                        }
-
-                        else if (
-                            video.webkitEnterFullscreen
-                        ) {
-
-                            video.webkitEnterFullscreen();
-
-                        }
-
-                    }
-                );
-
-
-                // =================================
-                // 처음에는 썸네일 표시
-                // =================================
-
-                video.style.visibility = "hidden";
+                setupCustomVideo(slide);
 
             }
 
@@ -1164,31 +1236,36 @@ function render() {
             dots.className = "slider-dots";
 
 
-            group.items.forEach((item, index) => {
+            group.items.forEach(
+                (item, index) => {
 
-                const dot =
-                    document.createElement("span");
+                    const dot =
+                        document.createElement("span");
 
-                dot.className = "slider-dot";
+                    dot.className =
+                        "slider-dot";
 
 
-                if (index === 0) {
+                    if (index === 0) {
 
-                    dot.classList.add("active");
+                        dot.classList.add(
+                            "active"
+                        );
+
+                    }
+
+
+                    dots.appendChild(dot);
 
                 }
-
-
-                dots.appendChild(dot);
-
-            });
+            );
 
 
             slider.appendChild(dots);
 
 
             // =================================
-            // 현재 슬라이드 표시
+            // 현재 슬라이드
             // =================================
 
             track.addEventListener(
@@ -1206,15 +1283,19 @@ function render() {
 
 
                     dots
-                        .querySelectorAll(".slider-dot")
-                        .forEach((dot, index) => {
+                        .querySelectorAll(
+                            ".slider-dot"
+                        )
+                        .forEach(
+                            (dot, index) => {
 
-                            dot.classList.toggle(
-                                "active",
-                                index === current
-                            );
+                                dot.classList.toggle(
+                                    "active",
+                                    index === current
+                                );
 
-                        });
+                            }
+                        );
 
                 }
             );
@@ -1274,7 +1355,10 @@ document.addEventListener(
     "play",
     function(event) {
 
-        if (event.target.tagName !== "VIDEO") {
+        if (
+            !event.target ||
+            event.target.tagName !== "VIDEO"
+        ) {
             return;
         }
 
@@ -1298,7 +1382,11 @@ document.addEventListener(
 
                         video.pause();
 
-                        video.currentTime = 0;
+                        try {
+                            video.currentTime = 0;
+                        } catch (error) {
+                            // 무시
+                        }
 
                     }
 
@@ -1319,13 +1407,16 @@ function getGroupTypeText(groupItems) {
 
     const types =
         [...new Set(
-            groupItems.map(item => item.type)
+            groupItems.map(
+                item => item.type
+            )
         )];
 
 
     return types
-        .map(type =>
-            translations[currentLanguage][type]
+        .map(
+            type =>
+                translations[currentLanguage][type]
         )
         .join(" · ");
 
@@ -1478,7 +1569,9 @@ function changeLanguage(language) {
         document.getElementById("currentFlag");
 
     const currentLanguageElement =
-        document.getElementById("currentLanguage");
+        document.getElementById(
+            "currentLanguage"
+        );
 
 
     if (currentFlag) {
@@ -1501,7 +1594,9 @@ function changeLanguage(language) {
         .querySelectorAll(".language-option")
         .forEach(option => {
 
-            option.classList.remove("active");
+            option.classList.remove(
+                "active"
+            );
 
         });
 
@@ -1514,7 +1609,9 @@ function changeLanguage(language) {
 
     if (selectedOption) {
 
-        selectedOption.classList.add("active");
+        selectedOption.classList.add(
+            "active"
+        );
 
     }
 
@@ -1526,7 +1623,9 @@ function changeLanguage(language) {
 
 
     const menu =
-        document.getElementById("languageMenu");
+        document.getElementById(
+            "languageMenu"
+        );
 
 
     if (menu) {
