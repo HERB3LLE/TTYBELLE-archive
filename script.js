@@ -497,6 +497,18 @@ let items = [
         thumbnail: "Number26.PNG"
     }
 
+    // =================================
+    // 영상
+    // =================================
+
+    {
+        type: "video",
+        date: "2026-03-16",
+        title: "빙글빙글 돌아가는 띠벨의 하루 비하인드",
+        file: "63aec40a0aac678da11cc60a61f7e4d5cf38dddf.mp4",
+        thumbnail: "IMG_8970.jpeg"
+    },
+
 ];
 
 
