@@ -194,6 +194,12 @@ let items = [
         file: "F5F840C6-37DF-44DE-A8DA-05B5A9AA6566.jpeg"
     },
 
+    {
+        type: "photo",
+        date: "2024-07-11",
+        title: "심플리 케이팝",
+        file: "0216670F-BDE5-482A-A8BC-3303B988D9FA.jpeg"
+    },
 
     // =================================
     // 릴스
