@@ -451,10 +451,6 @@ body {
 
     width: 100%;
 
-    /*
-       사진 / 영상 / 릴스
-       모두 1:1 정사각형
-    */
     aspect-ratio: 1 / 1;
 
     overflow: hidden;
@@ -469,10 +465,6 @@ body {
 
     height: 100%;
 
-    /*
-       원본 비율을 유지하면서
-       정사각형 영역을 꽉 채움
-    */
     object-fit: cover;
 
     display: block;
@@ -487,9 +479,6 @@ body {
 
     height: 100%;
 
-    /*
-       영상도 정사각형 영역을 꽉 채움
-    */
     object-fit: cover;
 }
 
@@ -560,6 +549,188 @@ body {
 
 
 /* =================================
+   커스텀 영상
+================================= */
+
+.custom-video {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #000000;
+}
+
+.custom-video video {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =================================
+   가운데 재생 버튼
+================================= */
+
+.center-play {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 50px;
+    height: 50px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    color: #222222;
+
+    font-size: 18px;
+
+    line-height: 50px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.center-play:hover {
+    transform:
+        translate(-50%, -50%)
+        scale(1.05);
+}
+
+.center-play.hidden {
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* =================================
+   영상 하단 컨트롤
+================================= */
+
+.video-bottom {
+    position: absolute;
+
+    left: 12px;
+    right: 12px;
+
+    bottom: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    z-index: 20;
+}
+
+
+/* =================================
+   진행바
+   기본적으로 숨김
+================================= */
+
+.video-progress {
+    flex: 1;
+
+    height: 3px;
+
+    background:
+        rgba(255, 255, 255, 0.35);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease;
+}
+
+
+/* 재생 중일 때만 표시 */
+
+.custom-video.playing .video-progress {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* 진행된 부분 */
+
+.video-progress-bar {
+    width: 0%;
+
+    height: 100%;
+
+    background: #ffffff;
+
+    border-radius: 10px;
+
+    transition:
+        width 0.05s linear;
+}
+
+
+/* =================================
+   전체화면 버튼
+================================= */
+
+.fullscreen-btn {
+    flex-shrink: 0;
+
+    width: 22px;
+    height: 22px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    line-height: 22px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    text-shadow:
+        0 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+
+/* =================================
    자료 없음
 ================================= */
 
@@ -595,7 +766,8 @@ body {
 
     padding: 15px;
 
-    background: rgba(0, 0, 0, 0.92);
+    background:
+        rgba(0, 0, 0, 0.92);
 }
 
 .modal.show {
@@ -631,6 +803,158 @@ body {
     line-height: 1;
 
     cursor: pointer;
+}
+
+
+/* =================================
+   날짜별 좌우 슬라이드
+================================= */
+
+.media-slider {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 7px;
+}
+
+.media-track {
+    display: flex;
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    overscroll-behavior-x: contain;
+}
+
+.media-track::-webkit-scrollbar {
+    display: none;
+}
+
+.media-slide {
+    flex: 0 0 100%;
+
+    width: 100%;
+
+    scroll-snap-align: start;
+
+    scroll-snap-stop: always;
+}
+
+
+/* =================================
+   슬라이드 점
+================================= */
+
+.slider-dots {
+    position: absolute;
+
+    left: 50%;
+    bottom: 8px;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 10;
+
+    display: flex;
+
+    gap: 4px;
+
+    padding: 4px 6px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(0, 0, 0, 0.35);
+}
+
+.slider-dot {
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.55);
+}
+
+.slider-dot.active {
+    background: #ffffff;
+}
+
+
+/* =================================
+   푸터
+================================= */
+
+.footer {
+    width: 100%;
+
+    background: #ffffff;
+
+    color: #111111;
+
+    border-top: 1px solid #eeeeee;
+}
+
+.footer-inner {
+    width: calc(100% - 28px);
+
+    min-height: 150px;
+
+    margin: 0 auto;
+
+    padding: 28px 0;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.footer-left {
+    color: #999999;
+
+    font-size: 8px;
+
+    letter-spacing: 0.2px;
+}
+
+.footer-links {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 7px;
+}
+
+.footer-links a {
+    color: #333333;
+
+    font-size: 12px;
+
+    line-height: 1.2;
+
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #999999;
 }
 
 
@@ -687,152 +1011,6 @@ body {
         width: 20px;
         height: 20px;
     }
-}
-
-/* =================================
-   날짜별 좌우 슬라이드
-================================= */
-
-.media-slider {
-    position: relative;
-
-    width: 100%;
-
-    overflow: hidden;
-
-    border-radius: 7px;
-}
-
-.media-track {
-    display: flex;
-
-    width: 100%;
-
-    overflow-x: auto;
-
-    scroll-snap-type: x mandatory;
-
-    scrollbar-width: none;
-
-    -webkit-overflow-scrolling: touch;
-
-    overscroll-behavior-x: contain;
-}
-
-.media-track::-webkit-scrollbar {
-    display: none;
-}
-
-.media-slide {
-    flex: 0 0 100%;
-
-    width: 100%;
-
-    scroll-snap-align: start;
-
-    scroll-snap-stop: always;
-}
-
-
-/* 슬라이드 점 */
-
-.slider-dots {
-    position: absolute;
-
-    left: 50%;
-    bottom: 8px;
-
-    transform: translateX(-50%);
-
-    z-index: 10;
-
-    display: flex;
-
-    gap: 4px;
-
-    padding: 4px 6px;
-
-    border-radius: 10px;
-
-    background: rgba(0, 0, 0, 0.35);
-}
-
-.slider-dot {
-    width: 4px;
-    height: 4px;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.55);
-}
-
-.slider-dot.active {
-    background: #ffffff;
-}
-
-/* =================================
-   푸터
-================================= */
-
-.footer {
-    width: 100%;
-    background: #ffffff;
-    color: #111111;
-    border-top: 1px solid #eeeeee;
-}
-
-.footer-inner {
-    width: calc(100% - 28px);
-    min-height: 150px;
-
-    margin: 0 auto;
-    padding: 28px 0;
-
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-
-    gap: 30px;
-}
-
-.footer-left {
-    color: #999999;
-
-    font-size: 8px;
-
-    letter-spacing: 0.2px;
-}
-
-.footer-links {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-end;
-
-    gap: 7px;
-}
-
-.footer-links a {
-    color: #333333;
-
-    font-size: 12px;
-
-    line-height: 1.2;
-
-    text-decoration: none;
-}
-
-.footer-links a:hover {
-    color: #999999;
-}
-
-
-/* =================================
-   푸터 - 작은 휴대폰
-================================= */
-
-@media (max-width: 360px) {
 
     .footer-inner {
         width: calc(100% - 20px);
@@ -849,55 +1027,30 @@ body {
     .footer-links a {
         font-size: 11px;
     }
-}
 
-.custom-video {
-    position: relative;
-}
+    .center-play {
+        width: 46px;
+        height: 46px;
 
-.custom-video video {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        font-size: 17px;
 
-.video-controls {
-    position: absolute;
-    left: 12px;
-    right: 12px;
-    bottom: 10px;
+        line-height: 46px;
+    }
 
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    .video-bottom {
+        left: 10px;
+        right: 10px;
+        bottom: 8px;
 
-    z-index: 10;
-}
+        gap: 6px;
+    }
 
-.video-controls button {
-    border: none;
-    background: transparent;
-    color: white;
+    .fullscreen-btn {
+        width: 20px;
+        height: 20px;
 
-    font-size: 18px;
-    padding: 3px;
+        font-size: 16px;
 
-    cursor: pointer;
-
-    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-}
-
-.video-controls .play-btn {
-    width: 24px;
-}
-
-.video-controls .fullscreen-btn {
-    width: 24px;
-}
-
-.video-controls .progress {
-    flex: 1;
-    height: 3px;
-    accent-color: white;
+        line-height: 20px;
+    }
 }
