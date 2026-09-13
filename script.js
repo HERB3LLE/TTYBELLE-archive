@@ -200,6 +200,20 @@ let items = [
         title: "심플리 케이팝",
         file: "0216670F-BDE5-482A-A8BC-3303B988D9FA.jpeg"
     },
+    
+        {
+        type: "photo",
+        date: "2024-05-14",
+        title: "Midas Touch Unreleased Photos",
+        file: "IMG_8866.jpeg"
+    },
+
+    {
+        type: "photo",
+        date: "2024-05-14",
+        title: "Midas Touch Unreleased Photos",
+        file: "IMG_8867.jpeg"
+    },
 
     // =================================
     // 릴스
