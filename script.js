@@ -405,7 +405,7 @@ let items = [
         title: "please somebody help us name this dance move🙏🙏",
         file: "Number26.MP4",
         thumbnail: "Number26.PNG"
-    },
+    }
 
 ];
 
@@ -540,7 +540,6 @@ function groupByDate(data) {
             ? `post-${item.postId}`
             : `date-${item.date}`;
 
-
         if (!groups[key]) {
 
             groups[key] = {
@@ -552,11 +551,9 @@ function groupByDate(data) {
 
         }
 
-
         groups[key].items.push(item);
 
     });
-
 
     return order.map(key => groups[key]);
 
@@ -739,10 +736,9 @@ function render() {
 
                         <video
                             src="${item.file}"
-                            controls
+                            ${item.thumbnail ? `poster="${item.thumbnail}"` : ""}
                             playsinline
                             preload="metadata"
-                            ${item.thumbnail ? `poster="${item.thumbnail}"` : ""}
                         ></video>
 
                     </div>
@@ -760,19 +756,207 @@ function render() {
 
                 slide.innerHTML = `
 
-                    <div class="media">
+                    <div class="media custom-video">
 
                         <video
                             src="${item.file}"
-                            controls
+                            poster="${item.thumbnail}"
                             playsinline
                             preload="metadata"
-                            poster="${item.thumbnail}"
                         ></video>
+
+                        <div class="video-controls">
+
+                            <button
+                                class="play-btn"
+                                type="button"
+                            >▶</button>
+
+                            <input
+                                class="progress"
+                                type="range"
+                                min="0"
+                                max="100"
+                                value="0"
+                            >
+
+                            <button
+                                class="fullscreen-btn"
+                                type="button"
+                            >⛶</button>
+
+                        </div>
 
                     </div>
 
                 `;
+
+
+                const video =
+                    slide.querySelector("video");
+
+                const playBtn =
+                    slide.querySelector(".play-btn");
+
+                const progress =
+                    slide.querySelector(".progress");
+
+                const fullscreenBtn =
+                    slide.querySelector(".fullscreen-btn");
+
+
+                // =================================
+                // 재생 / 일시정지
+                // =================================
+
+                playBtn.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.stopPropagation();
+
+                        if (video.paused) {
+
+                            video.play();
+
+                        } else {
+
+                            video.pause();
+
+                        }
+
+                    }
+                );
+
+
+                // =================================
+                // 영상 화면 눌러서 재생 / 일시정지
+                // =================================
+
+                video.addEventListener(
+                    "click",
+                    function() {
+
+                        if (video.paused) {
+
+                            video.play();
+
+                        } else {
+
+                            video.pause();
+
+                        }
+
+                    }
+                );
+
+
+                // =================================
+                // 재생 상태
+                // =================================
+
+                video.addEventListener(
+                    "play",
+                    function() {
+
+                        playBtn.textContent = "Ⅱ";
+
+                    }
+                );
+
+
+                video.addEventListener(
+                    "pause",
+                    function() {
+
+                        playBtn.textContent = "▶";
+
+                    }
+                );
+
+
+                // =================================
+                // 영상 끝나면 썸네일로 복귀
+                // =================================
+
+                video.addEventListener(
+                    "ended",
+                    function() {
+
+                        video.currentTime = 0;
+                        video.load();
+
+                        playBtn.textContent = "▶";
+                        progress.value = 0;
+
+                    }
+                );
+
+
+                // =================================
+                // 진행바
+                // =================================
+
+                video.addEventListener(
+                    "timeupdate",
+                    function() {
+
+                        if (video.duration) {
+
+                            progress.value =
+                                (video.currentTime /
+                                video.duration) * 100;
+
+                        }
+
+                    }
+                );
+
+
+                progress.addEventListener(
+                    "input",
+                    function(event) {
+
+                        event.stopPropagation();
+
+                        if (video.duration) {
+
+                            video.currentTime =
+                                (progress.value / 100) *
+                                video.duration;
+
+                        }
+
+                    }
+                );
+
+
+                // =================================
+                // 전체화면
+                // =================================
+
+                fullscreenBtn.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.stopPropagation();
+
+                        if (
+                            video.requestFullscreen
+                        ) {
+
+                            video.requestFullscreen();
+
+                        } else if (
+                            video.webkitEnterFullscreen
+                        ) {
+
+                            video.webkitEnterFullscreen();
+
+                        }
+
+                    }
+                );
 
             }
 
@@ -896,6 +1080,41 @@ function render() {
     });
 
 }
+
+
+// =================================
+// 다른 영상 재생 시
+// 이전 영상 정지 + 썸네일 복귀
+// =================================
+
+document.addEventListener(
+    "play",
+    function(event) {
+
+        if (event.target.tagName !== "VIDEO") {
+            return;
+        }
+
+
+        document
+            .querySelectorAll("video")
+            .forEach(video => {
+
+                if (video !== event.target) {
+
+                    video.pause();
+
+                    video.currentTime = 0;
+
+                    video.load();
+
+                }
+
+            });
+
+    },
+    true
+);
 
 
 // =================================
