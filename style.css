@@ -850,3 +850,54 @@ body {
         font-size: 11px;
     }
 }
+
+.custom-video {
+    position: relative;
+}
+
+.custom-video video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-controls {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    z-index: 10;
+}
+
+.video-controls button {
+    border: none;
+    background: transparent;
+    color: white;
+
+    font-size: 18px;
+    padding: 3px;
+
+    cursor: pointer;
+
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.video-controls .play-btn {
+    width: 24px;
+}
+
+.video-controls .fullscreen-btn {
+    width: 24px;
+}
+
+.video-controls .progress {
+    flex: 1;
+    height: 3px;
+    accent-color: white;
+}
