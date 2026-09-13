@@ -214,6 +214,13 @@ let items = [
         title: "Midas Touch Unreleased Photos",
         file: "IMG_8867.jpeg"
     },
+    
+        {
+        type: "photo",
+        date: "2024-07-28",
+        title: "Follow my lead, KISSY!📱",
+        file: "CDE2E49D-5AA3-4A7C-A113-A5C6A1E33D5A.jpeg"
+    },
 
     // =================================
     // 릴스
