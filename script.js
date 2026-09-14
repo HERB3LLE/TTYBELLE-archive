@@ -581,7 +581,7 @@ let items = [
         title: "Merry Christmas 🎄🎅💜💕💋 🐶🫧💬",
         file: "39aeb25b12e14bb54c1b8650acb132eec72a3388.mp4",
         thumbnail: "IMG_9013.jpeg"
-    },
+    }
 
 ];
 
@@ -787,9 +787,7 @@ function setupCustomVideo(slide) {
 
         try {
             video.currentTime = 0;
-        } catch (error) {
-            // 무시
-        }
+        } catch (error) {}
 
         customVideo.classList.remove("playing");
 
@@ -806,34 +804,31 @@ function setupCustomVideo(slide) {
     }
 
 
-    // 다른 영상이 재생될 때 사용
     video.resetToThumbnail =
         resetToThumbnail;
 
 
     // =================================
-    // 재생 / 일시정지
+    // 재생
     // =================================
 
-    function toggleVideo() {
+    function playVideo() {
 
-        if (video.paused) {
+        const promise =
+            video.play();
 
-            const playPromise =
-                video.play();
+        if (promise) {
 
-            if (
-                playPromise &&
-                typeof playPromise.catch === "function"
-            ) {
+            promise.catch(
+                function(error) {
 
-                playPromise.catch(() => {});
+                    console.log(
+                        "영상 재생 실패:",
+                        error
+                    );
 
-            }
-
-        } else {
-
-            video.pause();
+                }
+            );
 
         }
 
@@ -841,30 +836,60 @@ function setupCustomVideo(slide) {
 
 
     // =================================
-    // 영상 눌러서 재생 / 일시정지
+    // 일시정지
     // =================================
 
-    video.addEventListener(
-        "click",
-        function() {
+    function pauseVideo() {
 
-            toggleVideo();
+        video.pause();
 
-        }
-    );
+    }
 
 
     // =================================
-    // 가운데 ▶ 버튼
+    // 가운데 버튼
     // =================================
 
     centerPlay.addEventListener(
         "click",
         function(event) {
 
+            event.preventDefault();
             event.stopPropagation();
 
-            toggleVideo();
+            if (video.paused) {
+
+                playVideo();
+
+            } else {
+
+                pauseVideo();
+
+            }
+
+        }
+    );
+
+
+    // =================================
+    // 영상 클릭
+    // =================================
+
+    video.addEventListener(
+        "click",
+        function(event) {
+
+            event.stopPropagation();
+
+            if (video.paused) {
+
+                playVideo();
+
+            } else {
+
+                pauseVideo();
+
+            }
 
         }
     );
@@ -898,18 +923,22 @@ function setupCustomVideo(slide) {
         "pause",
         function() {
 
-            centerPlay.textContent = "▶";
+            if (!video.ended) {
 
-            centerPlay.classList.remove("hidden");
+                centerPlay.textContent = "▶";
 
-            customVideo.classList.remove("playing");
+                centerPlay.classList.remove("hidden");
+
+                customVideo.classList.remove("playing");
+
+            }
 
         }
     );
 
 
     // =================================
-    // 영상 끝나면 썸네일
+    // 영상 종료
     // =================================
 
     video.addEventListener(
@@ -936,8 +965,10 @@ function setupCustomVideo(slide) {
             ) {
 
                 const percent =
-                    (video.currentTime /
-                    video.duration) * 100;
+                    (
+                        video.currentTime /
+                        video.duration
+                    ) * 100;
 
                 progressBar.style.width =
                     percent + "%";
@@ -969,8 +1000,16 @@ function setupCustomVideo(slide) {
                 progress.getBoundingClientRect();
 
             const percent =
-                (event.clientX - rect.left) /
-                rect.width;
+                Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        (
+                            event.clientX -
+                            rect.left
+                        ) / rect.width
+                    )
+                );
 
             video.currentTime =
                 percent * video.duration;
@@ -987,23 +1026,22 @@ function setupCustomVideo(slide) {
         "click",
         function(event) {
 
+            event.preventDefault();
             event.stopPropagation();
 
             if (
-                typeof video.requestFullscreen ===
-                "function"
+                video.webkitEnterFullscreen
             ) {
 
-                video.requestFullscreen();
+                video.webkitEnterFullscreen();
 
             }
 
             else if (
-                typeof video.webkitEnterFullscreen ===
-                "function"
+                video.requestFullscreen
             ) {
 
-                video.webkitEnterFullscreen();
+                video.requestFullscreen();
 
             }
 
@@ -1014,6 +1052,8 @@ function setupCustomVideo(slide) {
     // =================================
     // 처음에는 썸네일
     // =================================
+
+    thumbnail.style.display = "block";
 
     video.style.visibility = "hidden";
 
@@ -1029,7 +1069,8 @@ function render() {
     const archive =
         document.getElementById("archive");
 
-    let filteredItems = [...items];
+    let filteredItems =
+        [...items];
 
 
     // =================================
@@ -1203,6 +1244,7 @@ function render() {
                         <video
                             src="${item.file}"
                             playsinline
+                            webkit-playsinline
                             preload="metadata"
                         ></video>
 
@@ -1229,7 +1271,6 @@ function render() {
                     </div>
 
                 `;
-
 
                 setupCustomVideo(slide);
 
@@ -1255,6 +1296,7 @@ function render() {
                         <video
                             src="${item.file}"
                             playsinline
+                            webkit-playsinline
                             preload="metadata"
                         ></video>
 
@@ -1281,7 +1323,6 @@ function render() {
                     </div>
 
                 `;
-
 
                 setupCustomVideo(slide);
 
@@ -1350,7 +1391,8 @@ function render() {
 
                     const current =
                         Math.round(
-                            track.scrollLeft / width
+                            track.scrollLeft /
+                            width
                         );
 
 
@@ -1416,59 +1458,6 @@ function render() {
     });
 
 }
-
-
-// =================================
-// 다른 영상 재생 시
-// 이전 영상 정지 + 썸네일 복귀
-// =================================
-
-document.addEventListener(
-    "play",
-    function(event) {
-
-        if (
-            !event.target ||
-            event.target.tagName !== "VIDEO"
-        ) {
-            return;
-        }
-
-
-        document
-            .querySelectorAll("video")
-            .forEach(video => {
-
-                if (video !== event.target) {
-
-                    if (
-                        typeof video.resetToThumbnail ===
-                        "function"
-                    ) {
-
-                        video.resetToThumbnail();
-
-                    }
-
-                    else {
-
-                        video.pause();
-
-                        try {
-                            video.currentTime = 0;
-                        } catch (error) {
-                            // 무시
-                        }
-
-                    }
-
-                }
-
-            });
-
-    },
-    true
-);
 
 
 // =================================
