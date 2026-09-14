@@ -575,6 +575,14 @@ let items = [
         thumbnail: "IMG_9012.jpeg"
     },
 
+    {
+        type: "video",
+        date: "2025-12-25",
+        title: "Merry Christmas 🎄🎅💜💕💋 🐶🫧💬",
+        file: "39aeb25b12e14bb54c1b8650acb132eec72a3388.mp4",
+        thumbnail: "IMG_9013.jpeg"
+    },
+
 ];
 
 
