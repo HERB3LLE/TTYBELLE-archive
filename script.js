@@ -551,6 +551,30 @@ let items = [
         thumbnail: "IMG_9009.jpeg"
     },
 
+    {
+        type: "video",
+        date: "2026-06-26",
+        title: "엠카운트다운 백스테이지 🐶🫧💬",
+        file: "https://res.cloudinary.com/webxapyu/video/upload/v1789349404/4c2d5a6f926f2f8279602cacdb913f316148d5be.mp4",
+        thumbnail: "IMG_9010.jpeg"
+    },
+
+    {
+        type: "video",
+        date: "2025-12-15",
+        title: "Doja Cat concert 🐶🫧💬",
+        file: "https://res.cloudinary.com/webxapyu/video/upload/v1789349330/8925e9be800d55fe9e626993ae8eb5b7678e0dc8.mp4",
+        thumbnail: "IMG_9011.jpeg"
+    },
+
+    {
+        type: "video",
+        date: "2026-06-27",
+        title: "Deja vu in Tokyo 백스테이지 🐶🫧💬",
+        file: "https://res.cloudinary.com/webxapyu/video/upload/v1789349392/07b348f9cd2a6da5989b42ddcea522007f1fe8ba.mp4",
+        thumbnail: "IMG_9012.jpeg"
+    },
+
 ];
 
 
