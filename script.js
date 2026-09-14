@@ -527,6 +527,30 @@ let items = [
         thumbnail: "IMG_8998.jpeg"
     },
 
+    {
+        type: "video",
+        date: "2026-06-07",
+        title: "셋로그 🐶🫧💬",
+        file: "1789319079437175.mp4",
+        thumbnail: "IMG_9007.jpeg"
+    },
+
+    {
+        type: "video",
+        date: "2026-06-07",
+        title: "셋로그 🐶🫧💬",
+        file: "1789319147040057.mp4",
+        thumbnail: "IMG_9008.jpeg"
+    },
+
+    {
+        type: "video",
+        date: "2026-05-28",
+        title: "셋로그 🐰🫧💬",
+        file: "1789319230036026.mp4",
+        thumbnail: "IMG_9009.jpeg"
+    },
+
 ];
 
 
