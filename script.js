@@ -581,7 +581,15 @@ let items = [
         title: "Merry Christmas 🎄🎅💜💕💋 🐶🫧💬",
         file: "39aeb25b12e14bb54c1b8650acb132eec72a3388.mp4",
         thumbnail: "IMG_9013.jpeg"
-    }
+    },
+
+    {
+        type: "video",
+        date: "2026-09-15",
+        title: "💋 : 벨과 나띠가 진짜라면 하트를 만들어주세요",
+        file: "1789463255269532.mp4",
+        thumbnail: "IMG_9071.jpeg"
+    },
 
 ];
 
