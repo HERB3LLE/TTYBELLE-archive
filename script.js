@@ -291,6 +291,13 @@ let items = [
         title: "",
         file: "bb3bc888c1d1bc1a2e0bf75afb7e883412c807a5.jpeg"
     },
+    
+    {
+        type: "photo",
+        date: "2026-09-18",
+        title: "버건띠벨🍇",
+        file: "IMG_9160.jpeg"
+    },
 
     // =================================
     // 릴스
