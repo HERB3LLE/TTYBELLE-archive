@@ -606,7 +606,7 @@ let items = [
 
     {
         type: "video",
-        date: "2025-08-09",
+        date: "2025-08-07",
         title: "이건 그냥 제가 안잊으려고 넣어놧어요.. 사라진 디카속에 있을 띠벨",
         file: "Video1.mov",
         thumbnail: "dro_wndown 2025-08-09T004628_still.jpeg"
