@@ -298,6 +298,13 @@ let items = [
         title: "버건띠벨🍇",
         file: "IMG_9160.jpeg"
     },
+    
+    {
+        type: "photo",
+        date: "2026-10-09",
+        title: "지지말자..",
+        file: "afb11d7d75e4d003f3bf1d8fc14c5e10b12d4c76.jpeg"
+    },
 
     // =================================
     // 릴스
